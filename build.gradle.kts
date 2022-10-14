@@ -12,9 +12,8 @@ plugins {
     application
     kotlin("jvm") version "1.7.20"
     id("io.ktor.plugin") version "2.1.2"
-    id("com.github.johnrengelman.shadow") version "6.1.0"
-    id("com.google.cloud.tools.appengine") version "2.4.2"
     id("org.jmailen.kotlinter") version "3.12.0"
+    id("com.github.johnrengelman.shadow") version "6.1.0"
 }
 
 group = "com.digitaldesigns.shoppe.api"
@@ -60,15 +59,12 @@ kotlinter {
     disabledRules = arrayOf("trailing-comma-on-declaration-site")
 }
 
-appengine {
-    deploy {
-        projectId = "GCLOUD_CONFIG"
-        version = "GCLOUD_CONFIG"
-    }
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = "1.8"
+tasks.withType<Jar> {
+    manifest {
+        attributes(
+            mapOf(
+                "Main-Class" to application.mainClassName
+            )
+        )
     }
 }
