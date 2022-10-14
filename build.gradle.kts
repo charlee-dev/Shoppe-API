@@ -1,3 +1,5 @@
+import com.google.cloud.tools.gradle.appengine.appyaml.AppEngineAppYamlExtension
+
 val ktorVersion: String by project
 val bCryptVersion: String by project
 val kmongoVersion: String by project
@@ -14,6 +16,7 @@ plugins {
     id("io.ktor.plugin") version "2.1.2"
     id("org.jmailen.kotlinter") version "3.12.0"
     id("com.github.johnrengelman.shadow") version "6.1.0"
+    id("com.google.cloud.tools.appengine") version "2.4.2"
 }
 
 group = "com.digitaldesigns.shoppe.api"
@@ -66,5 +69,17 @@ tasks.withType<Jar> {
                 "Main-Class" to application.mainClassName
             )
         )
+    }
+}
+
+
+
+configure<AppEngineAppYamlExtension> {
+    stage {
+        setArtifact("build/libs/${project.name}-all.jar")
+    }
+    deploy {
+        version = "GCLOUD_CONFIG"
+        projectId = "GCLOUD_CONFIG"
     }
 }

@@ -14,8 +14,10 @@ import com.digitaldesigns.shoppe.api.graphql.ShoppeConfig
 import org.koin.dsl.module
 import org.litote.kmongo.KMongo
 
+private val mongoUri: String = System.getenv("MONGO_URI") ?: ""
+
 val appModule = module() {
-    factory { KMongo.createClient(ShoppeConfig.mongoUri) }
+    factory { KMongo.createClient(mongoUri) }
     single { UserRepository(get()) }
     single { ProductRepository(get()) }
     single { ReviewRepository(get()) }

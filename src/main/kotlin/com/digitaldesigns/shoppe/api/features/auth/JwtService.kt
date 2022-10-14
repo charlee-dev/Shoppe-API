@@ -13,7 +13,7 @@ private const val CLAIM: String = "userId"
 private const val BEARER = "Bearer "
 
 class JwtService {
-    private val secret: String = ShoppeConfig.jwtSecret
+    private val secret: String = System.getenv("JWT_SECRET") ?: ""
     private val algorithm = Algorithm.HMAC256(secret)
     private val verifier: JWTVerifier = JWT.require(algorithm).build()
 
