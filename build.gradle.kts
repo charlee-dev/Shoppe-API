@@ -62,18 +62,6 @@ kotlinter {
     disabledRules = arrayOf("trailing-comma-on-declaration-site")
 }
 
-tasks.withType<Jar> {
-    manifest {
-        attributes(
-            mapOf(
-                "Main-Class" to application.mainClassName
-            )
-        )
-    }
-}
-
-
-
 configure<AppEngineAppYamlExtension> {
     stage {
         setArtifact("build/libs/${project.name}-all.jar")
