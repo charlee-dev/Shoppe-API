@@ -13,9 +13,9 @@ import com.digitaldesigns.shoppe.api.features.user.UserService
 import org.koin.dsl.module
 import org.litote.kmongo.KMongo
 
-private val mongoUri: String = System.getenv("MONGO_URI") ?: ""
+private val mongoUri: String = System.getenv("MONGO_URI") ?: "mongodb+srv://adrianwitaszak:5b5Q9zAjeWI7KY3o@chore.mcu5tle.mongodb.net/?retryWrites=true&w=majority"
 
-val appModule = module() {
+val appModule = module {
     factory { KMongo.createClient(mongoUri) }
     single { UserRepository(get()) }
     single { ProductRepository(get()) }
