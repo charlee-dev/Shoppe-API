@@ -21,6 +21,7 @@ job("Build and run tests") {
             api.gradlew("clean")
             api.gradlew("build")
             api.gradlew("test")
+            api.gradlew("appengineDeploy")
         }
     }
 }
