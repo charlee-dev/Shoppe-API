@@ -98,14 +98,22 @@ data class UserMinimal(
 )
 
 const val idDescription = "Auto-generated"
+
+// TODO: Need implementing - Max char
 const val emailDescription =
-    "Email format required eg: `email@test.com`" // TODO: Need implementing - Max char
+    "Email format required eg: `email@test.com`"
+
+// TODO: Need implementing - Max char
 const val displayNameDescription =
-    "String. Max length 50 characters -> Default \"\"" // TODO: Need implementing - Max char
+    "String. Max length 50 characters -> Default \"\""
+
+// TODO: Need implementing - change to imageId
 const val imageUrlDescription =
-    "Will change to image id in future release. -> Default \"\"" // TODO: Need implementing - change to imageId
+    "Will change to image id in future release. -> Default \"\""
+
+// TODO: Need implementing
 const val passwordDescription =
-    "Special characters prohibited @£€#¢∞§¶•ªº$%^&*()_+=" // TODO: Need implementing
+    "Special characters prohibited @£€#¢∞§¶•ªº$%^&*()_+="
 const val userDescription = """
 UserModel:
 - id: String

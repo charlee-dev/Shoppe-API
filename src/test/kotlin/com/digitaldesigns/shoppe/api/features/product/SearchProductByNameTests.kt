@@ -20,7 +20,7 @@ class SearchProductByNameTests : SchemaTest() {
                 "query" to product1.name,
                 "pageInput" to mapOf(
                     "page" to 0,
-                    "size" to 10,
+                    "size" to 10
                 )
             ),
             assert = { response ->
@@ -38,7 +38,7 @@ class SearchProductByNameTests : SchemaTest() {
                 "query" to "1",
                 "pageInput" to mapOf(
                     "page" to 0,
-                    "size" to 10,
+                    "size" to 10
                 )
             ),
             assert = { response ->
@@ -56,7 +56,7 @@ class SearchProductByNameTests : SchemaTest() {
                 "query" to product2.name,
                 "pageInput" to mapOf(
                     "page" to 0,
-                    "size" to 10,
+                    "size" to 10
                 )
             ),
             assert = { response ->
@@ -74,7 +74,7 @@ class SearchProductByNameTests : SchemaTest() {
                 "query" to product3.colors.first(),
                 "pageInput" to mapOf(
                     "page" to 0,
-                    "size" to 10,
+                    "size" to 10
                 )
             ),
             assert = { response ->
@@ -92,7 +92,7 @@ class SearchProductByNameTests : SchemaTest() {
                 "query" to product3.colors.first(),
                 "pageInput" to mapOf(
                     "page" to 0,
-                    "size" to 1,
+                    "size" to 1
                 )
             ),
             assert = { response ->
@@ -110,7 +110,7 @@ class SearchProductByNameTests : SchemaTest() {
                 "query" to product3.colors.first(),
                 "pageInput" to mapOf(
                     "page" to 1,
-                    "size" to 1,
+                    "size" to 1
                 )
             ),
             assert = { response ->

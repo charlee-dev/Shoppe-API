@@ -34,7 +34,10 @@ class ProductService(
     }
 
     fun updateProduct(
-        userId: String, shopId: String, productId: String, productUpdateInput: ProductUpdateInput,
+        userId: String,
+        shopId: String,
+        productId: String,
+        productUpdateInput: ProductUpdateInput,
     ): Product {
         val product = productRepository.getById(productId)
         return checkPermissions(userId, product.userId) {

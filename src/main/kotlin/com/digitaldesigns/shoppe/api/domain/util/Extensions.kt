@@ -37,8 +37,11 @@ fun <T> MongoCollection<T>.inPages(filter: Bson, pageInput: PageInput): Page<T> 
     val documents = results.asIterable().toList()
     val totalDocuments = countDocuments(filter)
     val pages = totalDocuments % pageInput.size
-    val totalPages = if (pages.toInt() != 0)
-        (totalDocuments / pageInput.size) + 1 else totalDocuments / pageInput.size
+    val totalPages = if (pages.toInt() != 0) {
+        (totalDocuments / pageInput.size) + 1
+    } else {
+        totalDocuments / pageInput.size
+    }
     val next = if (documents.isNotEmpty()) pageInput.page + 1 else null
     val prev = if (pageInput.page > 0) pageInput.page - 1 else null
     val info = PagingInfo(totalDocuments.toInt(), totalPages.toInt(), next, prev)

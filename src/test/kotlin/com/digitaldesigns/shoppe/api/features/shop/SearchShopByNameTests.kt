@@ -17,7 +17,7 @@ class SearchShopByNameTests : SchemaTest() {
             "query" to shop1.name,
             "pageInput" to mapOf(
                 "page" to 0,
-                "size" to 10,
+                "size" to 10
             )
         ),
         assert = { response ->

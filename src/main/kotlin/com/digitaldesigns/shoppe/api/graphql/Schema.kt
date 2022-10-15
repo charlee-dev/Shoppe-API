@@ -21,14 +21,14 @@ private val queries = listOf(
     TopLevelObject(UserSchema.Queries()),
     TopLevelObject(ProductSchema.Queries()),
     TopLevelObject(ReviewSchema.Queries()),
-    TopLevelObject(ShopSchema.Queries()),
+    TopLevelObject(ShopSchema.Queries())
 )
 private val mutations = listOf(
     TopLevelObject(AuthSchema.Mutations()),
     TopLevelObject(UserSchema.Mutations()),
     TopLevelObject(ProductSchema.Mutations()),
     TopLevelObject(ReviewSchema.Mutations()),
-    TopLevelObject(ShopSchema.Mutations()),
+    TopLevelObject(ShopSchema.Mutations())
 )
 val schema = toSchema(config, queries, mutations)
 

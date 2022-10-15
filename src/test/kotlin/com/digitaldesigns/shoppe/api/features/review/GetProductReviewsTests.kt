@@ -18,7 +18,7 @@ class GetProductReviewsTests : SchemaTest() {
                 "productId" to product1.id,
                 "pageInput" to mapOf(
                     "page" to 0,
-                    "size" to 10,
+                    "size" to 10
                 )
             ),
             assert = { response ->

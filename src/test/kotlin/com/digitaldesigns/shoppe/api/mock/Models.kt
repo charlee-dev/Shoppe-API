@@ -43,14 +43,14 @@ val shop1 = Shop(
     id = "1",
     name = "cakeShop",
     description = "descShop",
-    ownerId = user1.id,
+    ownerId = user1.id
 )
 
 val shop2 = Shop(
     id = "2",
     name = "carShop",
     description = "descShop",
-    ownerId = user1.id,
+    ownerId = user1.id
 )
 
 val mockShops = listOf(shop1, shop2)
@@ -62,7 +62,7 @@ val product1 = Product(
     userId = user1.id,
     colors = listOf("blue"),
     category = Category.CAKE,
-    shopId = shop1.id,
+    shopId = shop1.id
 )
 
 val product2 = Product(
@@ -72,7 +72,7 @@ val product2 = Product(
     userId = user1.id,
     colors = listOf("blue"),
     category = Category.DEFAULT,
-    shopId = shop1.id,
+    shopId = shop1.id
 )
 
 val product3 = Product(
@@ -82,7 +82,7 @@ val product3 = Product(
     userId = user2.id,
     colors = listOf("red", "blue"),
     category = Category.DEFAULT,
-    shopId = shop1.id,
+    shopId = shop1.id
 )
 
 val product4 = Product(
@@ -92,7 +92,7 @@ val product4 = Product(
     userId = user2.id,
     colors = listOf("red"),
     category = Category.ART,
-    shopId = shop1.id,
+    shopId = shop1.id
 )
 
 val mockProducts = listOf(product1, product2, product3, product4)

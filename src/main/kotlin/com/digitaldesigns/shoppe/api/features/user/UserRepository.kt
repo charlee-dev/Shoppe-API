@@ -29,7 +29,9 @@ class UserRepository(client: MongoClient) : CrudRepository<UserModel> {
 
     fun getMinimalUser(userId: String): UserMinimal {
         return try {
-            val user = col.findOne(UserModel::id eq userId) ?: error("Cannot get user with id $userId")
+            val user = col.findOne(UserModel::id eq userId) ?: error(
+                "Cannot get user with id $userId"
+            )
             user.toMinimal()
         } catch (t: Throwable) {
             throw GraphQLException("Cannot get user with that id - ${t.message}")

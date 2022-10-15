@@ -18,7 +18,7 @@ class GetProductsByProductCategoryTests : SchemaTest() {
                 "category" to product1.category,
                 "pageInput" to mapOf(
                     "page" to 0,
-                    "size" to 10,
+                    "size" to 10
                 )
             ),
             assert = { response ->

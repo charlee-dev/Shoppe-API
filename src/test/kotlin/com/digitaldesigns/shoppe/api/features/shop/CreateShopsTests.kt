@@ -16,9 +16,10 @@ class CreateShopsTests : SchemaTest() {
             "shopBasicInput" to mapOf(
                 "name" to "addedShop",
                 "description" to "descriptionShop",
-                "logo" to "logoShop",
+                "logo" to "logoShop"
             )
-        ), assert = { response ->
+        ),
+        assert = { response ->
             response.data.toString() shouldContain "name=addedShop, description=descriptionShop, ownerId=user1id}}"
             assertNull(response.errors)
         }

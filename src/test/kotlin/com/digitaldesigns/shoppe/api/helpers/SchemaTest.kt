@@ -86,7 +86,11 @@ open class SchemaTest {
                                 request,
                                 graphQLContext = graphQLContext
                             ) as GraphQLResponse<*>
-                            Logger.v("😇✉️ RESPONSE = \ndata = ${response.data}\nerrors = ${response.errors}\n")
+                            Logger.v(
+                                "😇✉️ RESPONSE = \n" +
+                                    "data = ${response.data}\n" +
+                                    "errors = ${response.errors}\n"
+                            )
                             assert(response)
                         }
                     }

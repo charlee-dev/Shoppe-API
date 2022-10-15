@@ -76,7 +76,7 @@ data class ProductBasicInput(
         shopId = shopId,
         images = images,
         category = category,
-        price = price,
+        price = price
     )
 }
 
@@ -107,7 +107,7 @@ data class ProductUpdateInput(
         shopId = shopId,
         images = images,
         category = category,
-        price = price,
+        price = price
     )
 }
 

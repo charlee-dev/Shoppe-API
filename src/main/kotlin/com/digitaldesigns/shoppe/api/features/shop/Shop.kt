@@ -27,14 +27,16 @@ data class ShopInput(
     val logo: String = "",
 ) {
     fun validate() {
-        name.trimWhitespaces().ifBlank { throw GraphQLException(Constants.Messages.CANNOT_BE_BLANK) }
+        name.trimWhitespaces().ifBlank {
+            throw GraphQLException(Constants.Messages.CANNOT_BE_BLANK)
+        }
     }
 
     fun toModel(ownerId: String) = Shop(
         name = name,
         description = description,
         logo = logo,
-        ownerId = ownerId,
+        ownerId = ownerId
     )
 }
 
@@ -46,7 +48,7 @@ data class ShopPage(
 
 fun Page<Shop>.toShopPage() = ShopPage(
     results = results,
-    info = info,
+    info = info
 )
 
 const val shopDescription = "placeholder"

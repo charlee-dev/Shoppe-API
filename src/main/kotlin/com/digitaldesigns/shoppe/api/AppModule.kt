@@ -10,7 +10,6 @@ import com.digitaldesigns.shoppe.api.features.shop.ShopRepository
 import com.digitaldesigns.shoppe.api.features.shop.ShopService
 import com.digitaldesigns.shoppe.api.features.user.UserRepository
 import com.digitaldesigns.shoppe.api.features.user.UserService
-import com.digitaldesigns.shoppe.api.graphql.ShoppeConfig
 import org.koin.dsl.module
 import org.litote.kmongo.KMongo
 

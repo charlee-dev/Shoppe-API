@@ -6,7 +6,6 @@ import com.auth0.jwt.JWTVerifier
 import com.auth0.jwt.algorithms.Algorithm
 import com.digitaldesigns.shoppe.api.domain.util.Constants
 import com.digitaldesigns.shoppe.api.domain.util.Constants.Messages.TOKEN_FAILED_DECODE
-import com.digitaldesigns.shoppe.api.graphql.ShoppeConfig
 import graphql.GraphQLException
 
 private const val CLAIM: String = "userId"
@@ -24,7 +23,7 @@ class JwtService {
 
     fun validatePassword(password: String, hashedPass: ByteArray): Boolean {
         return if (!BCrypt.verifyer()
-                .verify(password.toByteArray(Charsets.UTF_8), hashedPass).verified
+            .verify(password.toByteArray(Charsets.UTF_8), hashedPass).verified
         ) {
             throw GraphQLException(Constants.Messages.INVALID_CREDENTIALS)
         } else {

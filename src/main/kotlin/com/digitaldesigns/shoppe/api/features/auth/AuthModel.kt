@@ -18,7 +18,11 @@ data class AuthInput(
 ) {
     fun validate() {
         email.trimWhitespaces().ifBlank { throw GraphQLException(Constants.Messages.EMAIL_BLANK) }
-        password.trimWhitespaces().ifBlank { throw GraphQLException(Constants.Messages.PASSWORD_BLANK) }
+        password.trimWhitespaces().ifBlank {
+            throw GraphQLException(
+                Constants.Messages.PASSWORD_BLANK
+            )
+        }
     }
 }
 

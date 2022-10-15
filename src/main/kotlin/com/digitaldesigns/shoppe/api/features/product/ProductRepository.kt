@@ -26,7 +26,11 @@ class ProductRepository(client: MongoClient) : CrudRepository<Product> {
 
     fun queryProductNameByPaged(query: String, pageInput: PageInput): ProductPage = doSafely {
         val filter = or(
-            listOf(Product::name eq query, Product::description eq query, Product::colors contains query)
+            listOf(
+                Product::name eq query,
+                Product::description eq query,
+                Product::colors contains query
+            )
         )
         col.inPages(filter, pageInput).toProductPage()
     }
