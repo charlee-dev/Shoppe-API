@@ -8,12 +8,12 @@ job("Build and run tests") {
     startOn {
         gitPush {
             branchFilter {
-                +Regex("main")
+                +Regex("master")
             }
         }
     }
-    
-    container(displayName = "Gradle build", image = gradle:jdk11) {
+
+    container(displayName = "Gradle build", image = "gradle:jdk11") {
         kotlinScript { api ->
             if (api.gitBranch() == "refs/heads/master"){
                 println("Running in master branch")
