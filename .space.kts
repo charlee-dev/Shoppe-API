@@ -13,13 +13,7 @@ job("deploy") {
 
     container(displayName = "Build", image = "gradle:jdk11") {
         kotlinScript { api ->
-            try {
-                api.gradle("build")
-            } catch (ex: Exception) {
-                val recipient = ChannelIdentifier.Channel(ChatChannel.FromName("CI-channel"))
-                val content = ChatMessage.Text("Build failed")
-                api.space().chats.messages.sendMessage(recipient, content)
-            }
+            api.gradle("build")
         }
     }
 
