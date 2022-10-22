@@ -1,10 +1,17 @@
-FROM gradle:7-jdk11 AS build
-COPY --chown=gradle:gradle . /home/gradle/src
-WORKDIR /home/gradle/src
-RUN gradle buildFatJar --no-daemon
+# Use the official gradle image to create a build artifact.
+FROM gradle:6.7 as builder
 
-FROM openjdk:11
+# Copy local code to the container image.
+COPY build.gradle.kts .
+COPY gradle.properties .
+COPY src ./src
+
+# Build a release artifact.
+RUN gradle installDist
+
+FROM openjdk:8-jdk
 EXPOSE 8080:8080
 RUN mkdir /app
-COPY --from=build /home/gradle/src/build/libs/*-all.jar /app/api.jar
-ENTRYPOINT ["java","-jar","/app/api.jar"]
+COPY --from=builder /home/gradle/build/install/gradle /app/
+WORKDIR /app/bin
+CMD ["./gradle"]
