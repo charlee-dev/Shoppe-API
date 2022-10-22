@@ -18,7 +18,7 @@ job("Build and run tests") {
             api.space().doSafely("Build failed") {
                 api.gradlew("clean")
                 api.gradlew("build")
-                api.gradlew("test")
+//                api.gradlew("test")
                 api.gradlew("appengineDeploy")
             }
         }
