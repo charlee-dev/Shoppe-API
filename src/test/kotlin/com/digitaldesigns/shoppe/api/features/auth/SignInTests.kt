@@ -3,14 +3,11 @@ package com.digitaldesigns.shoppe.api.features.auth
 import com.digitaldesigns.shoppe.api.domain.util.Constants
 import com.digitaldesigns.shoppe.api.helpers.SchemaTest
 import com.digitaldesigns.shoppe.api.mock.password1
-import com.digitaldesigns.shoppe.api.mock.token1
 import com.digitaldesigns.shoppe.api.mock.user1
-import io.mockk.every
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldContain
 import kotlin.test.Test
 import kotlin.test.assertNull
-import kotlin.test.assertTrue
 
 private const val QUERY =
     "mutation SignIn(\$authInput: AuthInput!) { signIn(authInput: \$authInput) { token user { id displayName imageUrl }}}"
@@ -18,11 +15,6 @@ private const val QUERY =
 class SignInTests : SchemaTest() {
     @Test
     fun `Sign in with valid credentials should return data with AuthResponse`() = test(
-        mock = {
-            every { userRepository.getUserByEmail(any()) } returns user1
-//            every { jwtService.validatePassword(any(), any()) } returns true
-//            every { jwtService.generateToken(any()) } returns token1
-               },
         query = QUERY,
         variables = mapOf(
             "authInput" to mapOf(

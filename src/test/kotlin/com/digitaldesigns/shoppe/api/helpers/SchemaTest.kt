@@ -27,7 +27,6 @@ import com.expediagroup.graphql.server.types.GraphQLRequest
 import com.expediagroup.graphql.server.types.GraphQLResponse
 import io.ktor.server.testing.testApplication
 import io.mockk.MockKAnnotations
-import io.mockk.impl.annotations.MockK
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.dsl.module
@@ -36,13 +35,6 @@ import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 
 open class SchemaTest {
-
-    @MockK lateinit var userRepository: UserRepository
-    @MockK lateinit var shopRepository: ShopRepository
-    @MockK lateinit var productRepository: ProductRepository
-    @MockK lateinit var reviewRepository: ReviewRepository
-    @MockK lateinit var jwtService: JwtService
-
     @BeforeTest
     fun setup() {
         MockKAnnotations.init(this)
@@ -57,10 +49,10 @@ open class SchemaTest {
     }
 
     private val testModule = module {
-        single { userRepository }
-        single { productRepository }
-        single { reviewRepository }
-        single { shopRepository }
+        single { MockProvider.userRepository }
+        single { MockProvider.productRepository }
+        single { MockProvider.reviewRepository }
+        single { MockProvider.shopRepository }
         single { JwtService() }
         single { AuthService(get(), get()) }
         single { UserService(get(), get(), get(), get()) }
@@ -74,7 +66,6 @@ open class SchemaTest {
         shops: List<Shop> = mockShops,
         products: List<Product> = mockProducts,
         reviews: List<Review> = mockReviews,
-        mock: () -> Unit = {},
         query: String,
         variables: Map<String, Any?>? = emptyMap(),
         graphQLContext: Map<*, Any> = mapOf("id" to user1.id),
@@ -87,27 +78,22 @@ open class SchemaTest {
         val graphQLRequestHandler = GraphQLRequestHandler(getGraphQLObject())
 
         testApplication {
-//            userRepository.populateDatabase(users) {
-//                productRepository.populateDatabase(products) {
-//                    shopRepository.populateDatabase(shops) {
-//                        reviewRepository.populateDatabase(reviews) {
-            mock()
-            val request = GraphQLRequest(query, null, variables, null)
-            Logger.v("😇✉️ REQUEST = \n$request\n")
-            val response = graphQLRequestHandler.executeRequest(
-                request,
-                graphQLContext = graphQLContext
-            ) as GraphQLResponse<*>
-            Logger.v(
-                "😇✉️ RESPONSE = \n" +
-                        "data = ${response.data}\n" +
-                        "errors = ${response.errors}\n"
-            )
-            assert(response)
+            userRepository.populateDatabase(users) {
+                productRepository.populateDatabase(products) {
+                    shopRepository.populateDatabase(shops) {
+                        reviewRepository.populateDatabase(reviews) {
+                            val request = GraphQLRequest(query, null, variables, null)
+                            Logger.v("😇✉️ REQUEST = \n$request\n")
+                            val response = graphQLRequestHandler.executeRequest(
+                                request,
+                                graphQLContext = graphQLContext
+                            ) as GraphQLResponse<*>
+                            Logger.v("😇✉️ RESPONSE = \ndata = ${response.data}\nerrors = ${response.errors}\n")
+                            assert(response)
+                        }
+                    }
+                }
+            }
         }
-//                    }
-//                }
-//            }
-//        }
     }
 }

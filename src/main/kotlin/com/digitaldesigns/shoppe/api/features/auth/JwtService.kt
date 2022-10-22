@@ -32,12 +32,17 @@ class JwtService {
     }
 
     fun verifyToken(token: String): String {
-        val split = token.split(BEARER).last()
-        val result = verifier.verify(JWT.decode(split))
-            ?.getClaim(CLAIM)
-            ?.asString()
-            ?: throw GraphQLException(TOKEN_FAILED_DECODE)
-        result.ifBlank { throw GraphQLException(TOKEN_FAILED_DECODE) }
-        return result
+        return try {
+            val split = token.split(BEARER).last()
+            val decoded = JWT.decode(split)
+            val result = verifier.verify(decoded)
+                ?.getClaim(CLAIM)
+                ?.asString()
+                ?: throw GraphQLException(TOKEN_FAILED_DECODE)
+            result.ifBlank { throw GraphQLException(TOKEN_FAILED_DECODE) }
+        } catch (e: Exception) {
+            println("\uD83D\uDE07 EXCEPTION VERIFY TOKEN  = ${e.localizedMessage}")
+            ""
+        }
     }
 }

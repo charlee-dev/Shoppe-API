@@ -6,7 +6,7 @@ import kotlin.test.Test
 import kotlin.test.assertNull
 
 private const val QUERY =
-    "mutation AddShop(\$shopBasicInput: ShopInput!) { addShop(shopBasicInput: \$shopBasicInput) { id name description ownerId }}"
+    "mutation AddShop(\$shopBasicInput: ShopInput!) { createShop(shopBasicInput: \$shopBasicInput) { id name description ownerId }}"
 
 class CreateShopsTests : SchemaTest() {
     @Test

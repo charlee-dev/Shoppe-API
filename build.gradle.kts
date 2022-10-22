@@ -1,5 +1,3 @@
-import com.google.cloud.tools.gradle.appengine.appyaml.AppEngineAppYamlExtension
-
 val ktorVersion: String by project
 val bCryptVersion: String by project
 val kmongoVersion: String by project
@@ -15,8 +13,7 @@ plugins {
     kotlin("jvm") version "1.7.20"
     id("io.ktor.plugin") version "2.1.2"
     id("org.jmailen.kotlinter") version "3.12.0"
-    id("com.github.johnrengelman.shadow") version "6.1.0"
-    id("com.google.cloud.tools.appengine") version "2.4.2"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "com.digitaldesigns.shoppe.api"
@@ -46,11 +43,11 @@ dependencies {
     implementation("co.touchlab:kermit:$kermitVersion")
     implementation("com.natpryce:konfig:$konfigVersion")
 
-    testImplementation(kotlin("test-common"))
+    testImplementation(kotlin("test"))
     testImplementation("io.insert-koin:koin-test:$koinVersion")
     testImplementation("io.mockk:mockk:$mockkVersion")
     testImplementation("org.litote.kmongo:kmongo-core-tests:$kmongoVersion")
-    testImplementation("org.amshove.kluent:kluent:1.68")
+    testImplementation("org.amshove.kluent:kluent:1.70")
     testImplementation("io.ktor:ktor-server-test-host:$ktorVersion")
     testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
 }
@@ -62,12 +59,12 @@ kotlinter {
     disabledRules = arrayOf("trailing-comma-on-declaration-site")
 }
 
-configure<AppEngineAppYamlExtension> {
-    stage {
-        setArtifact("build/libs/${project.name}-all.jar")
-    }
-    deploy {
-        version = "GCLOUD_CONFIG"
-        projectId = "GCLOUD_CONFIG"
+tasks.withType<Jar> {
+    manifest {
+        attributes(
+            mapOf(
+                "Main-Class" to application.mainClassName
+            )
+        )
     }
 }

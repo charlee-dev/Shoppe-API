@@ -8,7 +8,7 @@ import kotlin.test.Test
 import kotlin.test.assertNull
 
 private const val QUERY =
-    "mutation AddProduct(\$shopId: String!, \$productBasicInput: ProductBasicInput!) { addProduct(shopId: \$shopId, productBasicInput: \$productBasicInput) { id name description price userId colors category }}"
+    "mutation AddProduct(\$shopId: String!, \$productBasicInput: ProductBasicInput!) { createProduct(shopId: \$shopId, productBasicInput: \$productBasicInput) { id name description price userId colors category }}"
 
 class CreateProductTests : SchemaTest() {
     @Test

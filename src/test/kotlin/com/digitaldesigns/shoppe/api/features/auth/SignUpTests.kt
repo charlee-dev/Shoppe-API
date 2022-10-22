@@ -8,14 +8,14 @@ import org.amshove.kluent.shouldContain
 import kotlin.test.Test
 import kotlin.test.assertNull
 
-private const val signUpMutation =
+private const val QUERY =
     "mutation signUp(\$authInput: AuthInput!) { signUp(authInput: \$authInput) { token user { id displayName imageUrl }}}"
 
 class SignUpTests : SchemaTest() {
     @Test
     fun `Sign up new user should return data with AuthResponse`() = test(
         users = emptyList(),
-        query = signUpMutation,
+        query = QUERY,
         variables = mapOf(
             "authInput" to mapOf(
                 "email" to user1.email,
@@ -30,7 +30,7 @@ class SignUpTests : SchemaTest() {
 
     @Test
     fun `Sign up but User already exists, returns email in use message`() = test(
-        query = signUpMutation,
+        query = QUERY,
         variables = mapOf(
             "authInput" to mapOf(
                 "email" to user1.email,
@@ -47,7 +47,7 @@ class SignUpTests : SchemaTest() {
 
     @Test
     fun `Sign up with blank email should return error message`() = test(
-        query = signUpMutation,
+        query = QUERY,
         variables = mapOf(
             "authInput" to mapOf(
                 "email" to "",
@@ -64,7 +64,7 @@ class SignUpTests : SchemaTest() {
 
     @Test
     fun `Sign up with blank password should return error message`() = test(
-        query = signUpMutation,
+        query = QUERY,
         variables = mapOf(
             "authInput" to mapOf(
                 "email" to user1.email,
