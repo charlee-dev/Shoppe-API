@@ -11,10 +11,10 @@ job("deploy") {
         workerPool = WorkerPools.SELF_HOSTED
     }
 
-    container(displayName = "Build and test", image = "gradle:jdk11") {
+    container(displayName = "Build", image = "gradle:jdk11") {
         kotlinScript { api ->
             try {
-                api.gradle("build", "-x", "test")
+                api.gradle("build")
             } catch (ex: Exception) {
                 val recipient = ChannelIdentifier.Channel(ChatChannel.FromName("CI-channel"))
                 val content = ChatMessage.Text("Build failed")
@@ -35,8 +35,5 @@ job("deploy") {
         testFailed { enabled = false }
         nonZeroExitCode { enabled = false }
         outOfMemory { enabled = false }
-        timeOut {
-            runningTimeOutInMinutes = 15
-        }
     }
 }
