@@ -11,15 +11,16 @@ job("deploy") {
         workerPool = WorkerPools.SELF_HOSTED
     }
 
-    container(displayName = "Build", image = "gradle:jdk11") {
-        kotlinScript { api ->
-            api.gradle("build")
-        }
-    }
+//    container(displayName = "Build", image = "gradle:jdk11") {
+//        kotlinScript { api ->
+//            api.gradle("build")
+//        }
+//    }
 
     host(displayName = "GCP deploy") {
         shellScript {
             content = """
+                gcloud components install app-engine-java
                 ./gradlew appengineDeploy
             """
         }
