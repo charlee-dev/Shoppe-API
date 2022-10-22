@@ -26,14 +26,16 @@ job("Build and run tests") {
     }
 
     host("Build artifacts and a Docker image") {
-        val user = Secrets("dockerhub_user")
-        val token = Secrets("dockerhub_token")
+        // assign project secrets to environment variables
+        env["HUB_USER"] = Secrets("dockerhub_user")
+        env["HUB_TOKEN"] = Secrets("dockerhub_token")
 
         shellScript {
             content = """
-                docker login --username $user --password $token
+                docker login --username ${'$'}HUB_USER --password "${'$'}HUB_TOKEN"
             """
         }
+
 
         dockerBuildPush {
             labels["vendor"] = "digitaldesigns"
