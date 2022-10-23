@@ -6,8 +6,8 @@ import com.digitaldesigns.shoppe.api.domain.util.Constants
 import com.digitaldesigns.shoppe.api.domain.util.doSafely
 import com.digitaldesigns.shoppe.api.domain.util.inPages
 import com.digitaldesigns.shoppe.api.features.product.model.Product
+import com.digitaldesigns.shoppe.api.features.product.model.ProductCategory
 import com.digitaldesigns.shoppe.api.features.product.model.ProductPage
-import com.digitaldesigns.shoppe.api.features.product.model.classes.ProductCategory
 import com.digitaldesigns.shoppe.api.features.product.model.toProductPage
 import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoCollection

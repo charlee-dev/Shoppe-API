@@ -3,9 +3,9 @@ package com.digitaldesigns.shoppe.api.features.order.model
 import com.digitaldesigns.shoppe.api.domain.models.Model
 import com.digitaldesigns.shoppe.api.domain.util.generateId
 import com.digitaldesigns.shoppe.api.features.product.model.MeasureUnit
+import com.digitaldesigns.shoppe.api.features.product.model.ProductCategory
 import com.digitaldesigns.shoppe.api.features.product.model.WeightUnit
 import com.digitaldesigns.shoppe.api.features.product.model.categoryDescription
-import com.digitaldesigns.shoppe.api.features.product.model.classes.ProductCategory
 import com.digitaldesigns.shoppe.api.features.product.model.colorsDescription
 import com.digitaldesigns.shoppe.api.features.product.model.depthDescription
 import com.digitaldesigns.shoppe.api.features.product.model.descriptionDescription
@@ -33,8 +33,6 @@ data class Order(
     val items: List<ProductOrdered>,
     @GraphQLDescription(transactionDescription)
     val transaction: Transaction,
-    @GraphQLDescription(orderItemsDescription)
-    val shipping: ProductShipping,
 ) : Model
 
 const val orderDescription = "placeholder"
