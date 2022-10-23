@@ -12,7 +12,7 @@ import io.ktor.server.routing.routing
 fun Application.configureRouting() {
     routing {
         get("/") {
-            call.respondText("Hello World!")
+            call.respondText("Welcome to the Shoppe!")
         }
 
         post("graphql") {
