@@ -1,6 +1,6 @@
 package com.digitaldesigns.shoppe.api.domain.repository
 
-import com.digitaldesigns.shoppe.api.domain.models.Identifiable
+import com.digitaldesigns.shoppe.api.domain.models.Model
 import com.digitaldesigns.shoppe.api.domain.util.Constants
 import com.digitaldesigns.shoppe.api.domain.util.doSafely
 import com.mongodb.client.MongoCollection
@@ -9,11 +9,11 @@ import org.litote.kmongo.eq
 import org.litote.kmongo.findOne
 import org.litote.kmongo.updateOne
 
-interface CrudRepository<T : Identifiable> {
+interface CrudRepository<T : Model> {
     var col: MongoCollection<T>
 
     fun getById(id: String): T {
-        return col.findOne(Identifiable::id eq id)
+        return col.findOne(Model::id eq id)
             ?: throw GraphQLException(Constants.Messages.NO_ITEM_WITH_ID + id)
     }
 
@@ -22,7 +22,7 @@ interface CrudRepository<T : Identifiable> {
     }
 
     fun delete(id: String): Boolean = doSafely {
-        col.findOneAndDelete(Identifiable::id eq id)
+        col.findOneAndDelete(Model::id eq id)
             ?: throw GraphQLException(Constants.Messages.NO_ITEM_WITH_ID + id)
         true
     }
@@ -32,9 +32,9 @@ interface CrudRepository<T : Identifiable> {
         getById(entry.id)
     }
 
-    fun update(entry: Identifiable): T = doSafely {
+    fun update(entry: Model): T = doSafely {
         col.updateOne(
-            Identifiable::id eq entry.id,
+            Model::id eq entry.id,
             entry,
             updateOnlyNotNullProperties = true
         )

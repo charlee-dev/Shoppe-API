@@ -1,7 +1,6 @@
 package com.digitaldesigns.shoppe.api.mock
 
 import com.digitaldesigns.shoppe.api.domain.util.encrypt
-import com.digitaldesigns.shoppe.api.features.product.model.Category
 import com.digitaldesigns.shoppe.api.features.product.model.Product
 import com.digitaldesigns.shoppe.api.features.review.Review
 import com.digitaldesigns.shoppe.api.features.shop.Shop
@@ -60,8 +59,8 @@ val product1 = Product(
     name = "cake",
     price = 10.0,
     userId = user1.id,
-    colors = listOf("blue"),
-    category = Category.CAKE,
+//    colors = listOf("blue"),  // Fixme
+//    category = Category.CAKE,
     shopId = shop1.id
 )
 
@@ -70,8 +69,8 @@ val product2 = Product(
     name = "car",
     price = 2000.0,
     userId = user1.id,
-    colors = listOf("blue"),
-    category = Category.DEFAULT,
+//    colors = listOf("blue"),  // Fixme
+//    category = Category.DEFAULT,
     shopId = shop1.id
 )
 
@@ -80,8 +79,8 @@ val product3 = Product(
     name = "car",
     price = 30.0,
     userId = user2.id,
-    colors = listOf("red", "blue"),
-    category = Category.DEFAULT,
+//    colors = listOf("red", "blue"),  // Fixme
+//    category = Category.DEFAULT,
     shopId = shop1.id
 )
 
@@ -90,8 +89,8 @@ val product4 = Product(
     name = "red canvas",
     price = 30.0,
     userId = user2.id,
-    colors = listOf("red"),
-    category = Category.ART,
+//    colors = listOf("red"),  // Fixme
+//    category = Category.ART,
     shopId = shop1.id
 )
 

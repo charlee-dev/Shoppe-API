@@ -1,5 +1,5 @@
 package com.digitaldesigns.shoppe.api.domain.models
 
-interface Identifiable {
+interface Model {
     val id: String
 }

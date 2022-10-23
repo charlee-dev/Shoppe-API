@@ -1,6 +1,6 @@
 package com.digitaldesigns.shoppe.api.features.product
 
-import com.digitaldesigns.shoppe.api.features.product.model.Category
+import com.digitaldesigns.shoppe.api.features.product.model.classes.ProductCategory
 import com.digitaldesigns.shoppe.api.helpers.SchemaTest
 import com.digitaldesigns.shoppe.api.mock.shop1
 import org.amshove.kluent.shouldContain
@@ -8,7 +8,7 @@ import kotlin.test.Test
 import kotlin.test.assertNull
 
 private const val QUERY =
-    "mutation AddProduct(\$shopId: String!, \$productBasicInput: ProductBasicInput!) { createProduct(shopId: \$shopId, productBasicInput: \$productBasicInput) { id name description price userId colors category }}"
+    "mutation AddProduct(\$shopId: String!, \$productCreateInput: ProductCreateInput!) { createProduct(shopId: \$shopId, productCreateInput: \$productCreateInput) { id name desc price userId categories { name }}}"
 
 class CreateProductTests : SchemaTest() {
     @Test
@@ -17,11 +17,10 @@ class CreateProductTests : SchemaTest() {
             query = QUERY,
             variables = mapOf(
                 "shopId" to shop1.id,
-                "productBasicInput" to mapOf(
+                "productCreateInput" to mapOf(
                     "name" to "new product",
-                    "description" to "new description",
-                    "images" to listOf("new image"),
-                    "category" to Category.HANDMADE,
+                    "remainingStock" to 10,
+                    "categories" to listOf<ProductCategory>(), // FixMe:
                     "price" to 10.0
                 )
             ),

@@ -15,7 +15,7 @@ class GetProductsByProductCategoryTests : SchemaTest() {
         test(
             query = QUERY,
             variables = mapOf(
-                "category" to product1.category,
+                "category" to product1.categories, // Fixme
                 "pageInput" to mapOf(
                     "page" to 0,
                     "size" to 10

@@ -1,6 +1,6 @@
 package com.digitaldesigns.shoppe.api.features.user
 
-import com.digitaldesigns.shoppe.api.domain.models.Identifiable
+import com.digitaldesigns.shoppe.api.domain.models.Model
 import com.digitaldesigns.shoppe.api.domain.util.Constants
 import com.digitaldesigns.shoppe.api.domain.util.encrypt
 import com.digitaldesigns.shoppe.api.domain.util.generateId
@@ -26,7 +26,7 @@ data class UserModel(
     var imageUrl: String = "",
     @GraphQLDescription(createdDateDescription)
     var dateCreated: String = getTimeMillis().toString(),
-) : Identifiable, Principal {
+) : Model, Principal {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

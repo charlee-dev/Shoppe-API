@@ -2,11 +2,11 @@ package com.digitaldesigns.shoppe.api.features.product
 
 import com.digitaldesigns.shoppe.api.domain.models.PageInput
 import com.digitaldesigns.shoppe.api.domain.util.checkPermissions
-import com.digitaldesigns.shoppe.api.features.product.model.Category
 import com.digitaldesigns.shoppe.api.features.product.model.Product
-import com.digitaldesigns.shoppe.api.features.product.model.ProductBasicInput
+import com.digitaldesigns.shoppe.api.features.product.model.ProductCreateInput
 import com.digitaldesigns.shoppe.api.features.product.model.ProductPage
 import com.digitaldesigns.shoppe.api.features.product.model.ProductUpdateInput
+import com.digitaldesigns.shoppe.api.features.product.model.classes.ProductCategory
 import com.digitaldesigns.shoppe.api.features.review.ReviewRepository
 
 class ProductService(
@@ -21,7 +21,7 @@ class ProductService(
         return productRepository.getAllByUserIdPaged(userId, pageInput)
     }
 
-    fun getProductsByCategory(category: Category, pageInput: PageInput): ProductPage {
+    fun getProductsByCategory(category: ProductCategory, pageInput: PageInput): ProductPage {
         return productRepository.getAllByCategoryPaged(category, pageInput)
     }
 
@@ -29,8 +29,8 @@ class ProductService(
         return productRepository.getProductsByShopId(shopId, pageInput)
     }
 
-    fun addProduct(userId: String, shopId: String, productBasicInput: ProductBasicInput): Product {
-        return productRepository.add(productBasicInput.toModel(userId, shopId))
+    fun addProduct(userId: String, shopId: String, productCreateInput: ProductCreateInput): Product {
+        return productRepository.add(productCreateInput.toModel(userId, shopId))
     }
 
     fun updateProduct(
@@ -41,7 +41,7 @@ class ProductService(
     ): Product {
         val product = productRepository.getById(productId)
         return checkPermissions(userId, product.userId) {
-            productRepository.update(productUpdateInput.toModel(userId, productId, shopId))
+            productRepository.update(productUpdateInput.toModel(userId, shopId, productId))
         }
     }
 

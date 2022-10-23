@@ -2,11 +2,11 @@ package com.digitaldesigns.shoppe.api.features.product
 
 import com.digitaldesigns.shoppe.api.domain.models.PageInput
 import com.digitaldesigns.shoppe.api.domain.util.withCurrentUser
-import com.digitaldesigns.shoppe.api.features.product.model.Category
 import com.digitaldesigns.shoppe.api.features.product.model.Product
-import com.digitaldesigns.shoppe.api.features.product.model.ProductBasicInput
+import com.digitaldesigns.shoppe.api.features.product.model.ProductCreateInput
 import com.digitaldesigns.shoppe.api.features.product.model.ProductPage
 import com.digitaldesigns.shoppe.api.features.product.model.ProductUpdateInput
+import com.digitaldesigns.shoppe.api.features.product.model.classes.ProductCategory
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 import com.expediagroup.graphql.server.operations.Mutation
 import com.expediagroup.graphql.server.operations.Query
@@ -47,7 +47,7 @@ class ProductSchema {
         @GraphQLDescription("Get all products from specific product category")
         @Suppress("unused")
         fun getProductsByProductCategory(
-            category: Category,
+            category: ProductCategory,
             pageInput: PageInput,
         ): ProductPage {
             return productService.getProductsByCategory(category, pageInput)
@@ -62,10 +62,10 @@ class ProductSchema {
         fun createProduct(
             dfe: DataFetchingEnvironment,
             shopId: String,
-            productBasicInput: ProductBasicInput,
+            productCreateInput: ProductCreateInput,
         ): Product {
             return dfe.withCurrentUser { userId ->
-                productService.addProduct(userId, shopId, productBasicInput)
+                productService.addProduct(userId, shopId, productCreateInput)
             }
         }
 

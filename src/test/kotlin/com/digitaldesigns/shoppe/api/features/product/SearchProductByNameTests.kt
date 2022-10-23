@@ -71,7 +71,7 @@ class SearchProductByNameTests : SchemaTest() {
         test(
             query = QUERY,
             variables = mapOf(
-                "query" to product3.colors.first(),
+                "query" to product3,  // Fixme: color
                 "pageInput" to mapOf(
                     "page" to 0,
                     "size" to 10
@@ -89,7 +89,7 @@ class SearchProductByNameTests : SchemaTest() {
         test(
             query = QUERY,
             variables = mapOf(
-                "query" to product3.colors.first(),
+                "query" to product3,  // Fixme: color
                 "pageInput" to mapOf(
                     "page" to 0,
                     "size" to 1
@@ -107,7 +107,7 @@ class SearchProductByNameTests : SchemaTest() {
         test(
             query = QUERY,
             variables = mapOf(
-                "query" to product3.colors.first(),
+                "query" to product3, // FIXME: color
                 "pageInput" to mapOf(
                     "page" to 1,
                     "size" to 1

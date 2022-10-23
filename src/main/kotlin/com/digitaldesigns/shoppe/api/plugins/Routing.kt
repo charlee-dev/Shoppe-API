@@ -22,7 +22,7 @@ fun Application.configureRouting() {
         get("playground") {
             this.call.respondText(
                 buildPlaygroundHtml("graphql", "subscriptions"),
-                ContentType.Text.Html
+                ContentType.Text.Html,
             )
         }
     }

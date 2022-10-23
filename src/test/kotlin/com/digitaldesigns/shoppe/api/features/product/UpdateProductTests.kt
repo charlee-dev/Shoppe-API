@@ -1,9 +1,10 @@
 package com.digitaldesigns.shoppe.api.features.product
 
-import com.digitaldesigns.shoppe.api.features.product.model.Category
+import com.digitaldesigns.shoppe.api.features.product.model.classes.ProductCategory
 import com.digitaldesigns.shoppe.api.helpers.SchemaTest
 import com.digitaldesigns.shoppe.api.mock.product1
 import com.digitaldesigns.shoppe.api.mock.shop1
+import com.digitaldesigns.shoppe.api.mock.user1
 import org.amshove.kluent.shouldBeEqualTo
 import kotlin.test.Test
 import kotlin.test.assertNull
@@ -23,7 +24,7 @@ class UpdateProductTests : SchemaTest() {
                     "name" to "updated product",
                     "description" to "updated description",
                     "images" to listOf("updated image"),
-                    "category" to Category.HANDMADE,
+                    "category" to ProductCategory(name = "default", createdBy = user1.id),  // Fixme; category
                     "price" to 20.0
                 )
             ),

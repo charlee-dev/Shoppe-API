@@ -1,6 +1,6 @@
 package com.digitaldesigns.shoppe.api.features.review
 
-import com.digitaldesigns.shoppe.api.domain.models.Identifiable
+import com.digitaldesigns.shoppe.api.domain.models.Model
 import com.digitaldesigns.shoppe.api.domain.models.Page
 import com.digitaldesigns.shoppe.api.domain.models.PagingInfo
 import com.digitaldesigns.shoppe.api.domain.util.generateId
@@ -21,7 +21,7 @@ data class Review(
     val rating: Int,
     @GraphQLDescription(dateCreatedDescription)
     val dateCreated: String = getTimeMillis().toString(),
-) : Identifiable
+) : Model
 
 @GraphQLDescription(reviewInputDescription)
 data class ReviewInput(

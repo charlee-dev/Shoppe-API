@@ -5,13 +5,12 @@ import com.digitaldesigns.shoppe.api.domain.repository.CrudRepository
 import com.digitaldesigns.shoppe.api.domain.util.Constants
 import com.digitaldesigns.shoppe.api.domain.util.doSafely
 import com.digitaldesigns.shoppe.api.domain.util.inPages
-import com.digitaldesigns.shoppe.api.features.product.model.Category
 import com.digitaldesigns.shoppe.api.features.product.model.Product
 import com.digitaldesigns.shoppe.api.features.product.model.ProductPage
+import com.digitaldesigns.shoppe.api.features.product.model.classes.ProductCategory
 import com.digitaldesigns.shoppe.api.features.product.model.toProductPage
 import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoCollection
-import org.litote.kmongo.contains
 import org.litote.kmongo.eq
 import org.litote.kmongo.getCollection
 import org.litote.kmongo.or
@@ -28,8 +27,7 @@ class ProductRepository(client: MongoClient) : CrudRepository<Product> {
         val filter = or(
             listOf(
                 Product::name eq query,
-                Product::description eq query,
-                Product::colors contains query
+                Product::desc eq query,
             )
         )
         col.inPages(filter, pageInput).toProductPage()
@@ -45,8 +43,9 @@ class ProductRepository(client: MongoClient) : CrudRepository<Product> {
         col.find(filter).toList()
     }
 
-    fun getAllByCategoryPaged(category: Category, pageInput: PageInput): ProductPage = doSafely {
-        val filter = Product::category eq category
+    fun getAllByCategoryPaged(category: ProductCategory, pageInput: PageInput): ProductPage = doSafely {
+//        val filter = Product::categories eq category // FIXME: fix get categories
+        val filter = Product::userId eq "userId"
         col.inPages(filter, pageInput).toProductPage()
     }
 

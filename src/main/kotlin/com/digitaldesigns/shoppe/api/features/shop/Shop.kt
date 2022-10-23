@@ -1,6 +1,6 @@
 package com.digitaldesigns.shoppe.api.features.shop
 
-import com.digitaldesigns.shoppe.api.domain.models.Identifiable
+import com.digitaldesigns.shoppe.api.domain.models.Model
 import com.digitaldesigns.shoppe.api.domain.models.Page
 import com.digitaldesigns.shoppe.api.domain.models.PagingInfo
 import com.digitaldesigns.shoppe.api.domain.util.Constants
@@ -18,7 +18,7 @@ data class Shop(
     val logo: String = "",
     val ownerId: String,
     val dateCreated: String = getTimeMillis().toString(),
-) : Identifiable
+) : Model
 
 @GraphQLDescription(shopInputDescription)
 data class ShopInput(
