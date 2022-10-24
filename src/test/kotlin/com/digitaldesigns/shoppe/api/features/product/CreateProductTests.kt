@@ -1,6 +1,6 @@
 package com.digitaldesigns.shoppe.api.features.product
 
-import com.digitaldesigns.shoppe.api.features.product.model.classes.ProductCategory
+import com.digitaldesigns.shoppe.api.features.product.model.ProductCategory
 import com.digitaldesigns.shoppe.api.helpers.SchemaTest
 import com.digitaldesigns.shoppe.api.mock.shop1
 import org.amshove.kluent.shouldContain

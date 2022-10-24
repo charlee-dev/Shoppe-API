@@ -1,6 +1,7 @@
 package com.digitaldesigns.shoppe.api.features.user
 
 import com.digitaldesigns.shoppe.api.domain.util.withCurrentUser
+import com.digitaldesigns.shoppe.api.graphql.GraphQLDesc
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 import com.expediagroup.graphql.server.operations.Mutation
 import com.expediagroup.graphql.server.operations.Query
@@ -35,11 +36,11 @@ class UserSchema {
         @Suppress("unused")
         fun updateUser(
             dfe: DataFetchingEnvironment,
-            @GraphQLDescription(userInputDescription)
-            userInput: UserInput,
+            @GraphQLDescription(GraphQLDesc.User.input)
+            userUpdateInput: UserUpdateInput,
         ): UserModel {
             return dfe.withCurrentUser { userId ->
-                userService.updateUser(userId, userInput)
+                userService.updateUser(userId, userUpdateInput)
             }
         }
 

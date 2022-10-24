@@ -132,4 +132,147 @@ object GraphQLDesc {
         const val results = "List of Reviews"
         const val info = "PageInfo model"
     }
+
+    object User {
+        const val model = "User model."
+        const val minimal = "User minimal model."
+        const val input = "User input model."
+        const val profile = "User profile with users list shops, products, reviews, orders"
+        const val id = "User identifier."
+        const val email = "User email format required eg: `email@test.com`"
+        const val password = "User password. Special characters prohibited @£€#¢∞§¶•ªº\$%^&*()_+="
+        const val displayName = "The user's display name. String. Max length 50 characters."
+        const val userHandle = "User handle. Default is displayName. String. Max length 24 characters."
+        const val imageUrl = "User image url."
+        const val firstName = "Users first name"
+        const val lastName = "Users last name"
+        const val locale = "Users default localization"
+        const val dateCreated = "Users creation date in GMT"
+        const val lastModified = "Users last modification date in GMT"
+    }
+
+    object OrderItemTax {
+        const val model = "Order line item tax entry."
+        const val total = "The total tax for this tax rate on this item."
+        const val subtotal = "The subtotal tax for this tax rate on this item."
+    }
+
+    object ShippingOrderAddress {
+        const val model = "An order address."
+        const val firstName = "The first name of the person in the address."
+        const val lastName = "The last name of the person in the address."
+        const val company = "The company name of the person in the address."
+        const val address1 = "The first address line in the address."
+        const val address2 = "The second address line in the address."
+        const val city = "The city in the address."
+        const val state = "The state in the address."
+        const val postCode = "The postal code in the address."
+        const val country = "The country code for the address."
+    }
+
+    object BillingOrderAddress {
+        const val model = "An order billing address"
+        const val email = "The email address of the person in the address."
+        const val phone = "The phone number of the person in the address."
+    }
+
+    object OrderRefundLine {
+        const val model = "Order refund line"
+        const val reason = "The reason for giving the refund."
+        const val total = "The total amount of the refund."
+    }
+
+    object OrderCouponLine {
+        const val model = "Order coupon line"
+        const val code = "The coupon code"
+        const val discount = "The discount amount."
+        const val discountTax = "The discount tax."
+    }
+
+    object OrderFeeLine {
+        const val model = "Order fee line"
+        const val name = "The name of the fee."
+        const val taxClass = "The tax class of the fee."
+        const val taxStatus = "The tax status of the fee."
+        const val amount = "The total amount for this fee."
+        const val total = "The display total amount for this fee."
+        const val totalTax = "The total tax amount for this fee."
+        const val taxes = "The taxes applied to this fee."
+    }
+
+    object OrderShippingLine {
+        const val model = "Order shipping line"
+        const val methodTitle = "The shipping method title."
+        const val methodId = "The shipping method id."
+        const val instanceId = "The shipping method instance id."
+        const val total = "The total shipping amount for this method."
+        const val totalTax = "The total tax amount for this shipping method."
+        const val taxes = "The taxes applied to this shipping method."
+    }
+
+    object OrderTaxRate {
+        const val model = ""
+        const val rateCode = "The tax rate code."
+        const val rateId = "The tax rate id."
+        const val label = "The tax label."
+        const val compoundRate = "Flag indicating whether it's a compound tax rate."
+        const val taxTotal = "The total tax for this rate code."
+        const val shippingTaxTotal = "The total shipping tax for this rate code."
+        const val ratePercent = "The tax rate as a percentage."
+    }
+
+    object OrderLineItem {
+        const val model = "Order Line Item"
+        const val name = "The name of the product."
+        const val productId = "The ID of the product."
+        const val variationId = "The ID of the product variation."
+        const val quantity = "The quantity of the product."
+        const val taxClass = "The tax class for the product."
+        const val subtotal = "The subtotal for the product."
+        const val subtotalTax = "The subtotal tax for the product."
+        const val total = "The total for the product including adjustments."
+        const val totalTax = "The total tax for the product including adjustments."
+        const val taxes = "The taxes applied to the product."
+        const val sku = "The product SKU."
+        const val price = "The price of the product."
+        const val parentName = "The name of the parent product."
+    }
+
+    object Order {
+        const val model = "An order object."
+        const val parentId = "The parent order id."
+        const val status = "The order status."
+        const val currency = "The order currency."
+        const val version = "The WC version used to create the order."
+        const val pricesIncludeTax = "Flags if the prices include tax."
+        const val discountTotal = "The total of the discounts on the order."
+        const val discountTax = "The total of the tax on discounts on the order."
+        const val shippingTotal = "The total of the shipping on the order."
+        const val shippingTax = "The total of the tax on shipping on the order."
+        const val cartTax = "The total cart tax on the order."
+        const val total = "The total for the order including adjustments."
+        const val totalTax = "The total tax for the order including adjustments."
+        const val customerId = "The customer id."
+        const val billing = "The billing address."
+        const val shipping = "The shipping address."
+        const val paymentMethod = "Name of the payment method."
+        const val transactionId = "Payment transaction ID."
+        const val customerIpAddress = "Customer IP address."
+        const val customerNote = "Customer note."
+        const val dateCompleted = "Date the order was completed."
+        const val datePaid = "Date the order was paid."
+        const val orderNumber = "Number assigned to the order."
+        const val currencySymbol = "Currency symbol for the order."
+        const val setPaid = "The order's paid state."
+        const val lineItems = "The order's line items."
+        const val taxLines = "The order's tax rates."
+        const val shippingLines = "The order's shipping charges."
+        const val feeLines = "The order's fees."
+        const val couponLines = "The coupons used on the order."
+        const val refunds = "The refunds to the order."
+    }
+
+    object OrderStatus {
+        const val model = "An order's status."
+    }
 }

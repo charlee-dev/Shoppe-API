@@ -15,10 +15,10 @@ class UserService(
         return UserProfile(user)
     }
 
-    fun updateUser(userId: String, userInput: UserInput): UserModel {
-        userInput.validate()
-        userRepository throwIfUserWithThatEmailExists userInput.email
-        val user = userInput.toUser(userId)
+    fun updateUser(userId: String, userUpdateInput: UserUpdateInput): UserModel {
+        userUpdateInput.validate()
+        userRepository throwIfUserWithThatEmailExists userUpdateInput.email
+        val user = userUpdateInput.toUser(userId)
         return userRepository.update(user)
     }
 

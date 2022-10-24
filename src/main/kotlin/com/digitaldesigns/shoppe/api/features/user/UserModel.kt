@@ -5,27 +5,26 @@ import com.digitaldesigns.shoppe.api.domain.util.Constants
 import com.digitaldesigns.shoppe.api.domain.util.encrypt
 import com.digitaldesigns.shoppe.api.domain.util.generateId
 import com.digitaldesigns.shoppe.api.domain.util.trimWhitespaces
-import com.digitaldesigns.shoppe.api.features.product.model.createdDateDescription
+import com.digitaldesigns.shoppe.api.graphql.GraphQLDesc
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 import com.expediagroup.graphql.generator.annotations.GraphQLIgnore
 import graphql.GraphQLException
 import io.ktor.server.auth.Principal
 import io.ktor.util.date.getTimeMillis
 
-@GraphQLDescription(userDescription)
+@GraphQLDescription(GraphQLDesc.User.model)
 data class UserModel(
-    @GraphQLDescription(idDescription)
-    override val id: String = generateId(),
-    @GraphQLDescription(emailDescription)
-    var email: String,
-    @GraphQLIgnore
-    var hashedPass: ByteArray,
-    @GraphQLDescription(displayNameDescription)
-    var displayName: String = "",
-    @GraphQLDescription(imageUrlDescription)
-    var imageUrl: String = "",
-    @GraphQLDescription(createdDateDescription)
-    var dateCreated: String = getTimeMillis().toString(),
+    @GraphQLDescription(GraphQLDesc.User.id) override val id: String = generateId(),
+    @GraphQLDescription(GraphQLDesc.User.email) var email: String,
+    @GraphQLIgnore var hashedPass: ByteArray,
+    @GraphQLDescription(GraphQLDesc.User.displayName) var displayName: String = "",
+    @GraphQLDescription(GraphQLDesc.User.userHandle) var userHandle: String = "",
+    @GraphQLDescription(GraphQLDesc.User.imageUrl) var imageUrl: String = "",
+    @GraphQLDescription(GraphQLDesc.User.firstName) var firstName: String = "",
+    @GraphQLDescription(GraphQLDesc.User.lastName) var lastName: String = "",
+    @GraphQLDescription(GraphQLDesc.User.locale) var locale: String = "",
+    @GraphQLDescription(GraphQLDesc.User.dateCreated) var dateCreated: String = getTimeMillis().toString(),
+    @GraphQLDescription(GraphQLDesc.User.lastModified) var lastModified: String = dateCreated,
 ) : Model, Principal {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -58,16 +57,16 @@ data class UserModel(
     )
 }
 
-@GraphQLDescription(userInputDescription)
-data class UserInput(
-    @GraphQLDescription(emailDescription)
-    val email: String,
-    @GraphQLDescription(passwordDescription)
-    val password: String,
-    @GraphQLDescription(displayNameDescription)
-    val displayName: String,
-    @GraphQLDescription(imageUrlDescription)
-    val imageUrl: String,
+@GraphQLDescription(GraphQLDesc.User.input)
+data class UserUpdateInput(
+    @GraphQLDescription(GraphQLDesc.User.email) val email: String,
+    @GraphQLDescription(GraphQLDesc.User.password) val password: String,
+    @GraphQLDescription(GraphQLDesc.User.displayName) val displayName: String,
+    @GraphQLDescription(GraphQLDesc.User.userHandle) var userHandle: String = "",
+    @GraphQLDescription(GraphQLDesc.User.imageUrl) var imageUrl: String = "",
+    @GraphQLDescription(GraphQLDesc.User.firstName) var firstName: String = "",
+    @GraphQLDescription(GraphQLDesc.User.lastName) var lastName: String = "",
+    @GraphQLDescription(GraphQLDesc.User.locale) var locale: String = "",
 ) {
     fun validate() {
         email.trimWhitespaces().ifBlank { throw GraphQLException(Constants.Messages.EMAIL_BLANK) }
@@ -78,67 +77,22 @@ data class UserInput(
         email = email,
         hashedPass = password.encrypt(),
         displayName = displayName,
-        imageUrl = imageUrl
+        userHandle = userHandle, // TODO: add check if handle exists
+        imageUrl = imageUrl,
+        firstName = firstName,
+        lastName = lastName,
+        locale = locale,
     )
 }
 
-@GraphQLDescription(userProfileDescription)
+@GraphQLDescription(GraphQLDesc.User.profile)
 data class UserProfile(
-    @GraphQLDescription(userDescription) val user: UserModel,
+    @GraphQLDescription(GraphQLDesc.User.model) val user: UserModel,
 )
 
-@GraphQLDescription(userMinimalDescription)
+@GraphQLDescription(GraphQLDesc.User.minimal)
 data class UserMinimal(
-    @GraphQLDescription(idDescription)
-    val id: String,
-    @GraphQLDescription(displayNameDescription)
-    val displayName: String,
-    @GraphQLDescription(imageUrlDescription)
-    val imageUrl: String,
+    @GraphQLDescription(GraphQLDesc.User.id) val id: String,
+    @GraphQLDescription(GraphQLDesc.User.displayName) val displayName: String,
+    @GraphQLDescription(GraphQLDesc.User.imageUrl) val imageUrl: String,
 )
-
-const val idDescription = "Auto-generated"
-
-// TODO: Need implementing - Max char
-const val emailDescription =
-    "Email format required eg: `email@test.com`"
-
-// TODO: Need implementing - Max char
-const val displayNameDescription =
-    "String. Max length 50 characters -> Default \"\""
-
-// TODO: Need implementing - change to imageId
-const val imageUrlDescription =
-    "Will change to image id in future release. -> Default \"\""
-
-// TODO: Need implementing
-const val passwordDescription =
-    "Special characters prohibited @£€#¢∞§¶•ªº$%^&*()_+="
-const val userDescription = """
-UserModel:
-- id: String
-- email: String
-- displayName: String
-- imageUrl: String
-"""
-const val userInputDescription = """
-UserInput:
-- email: String
-- password: String
-- displayName: String
-- imageUrl: String
-"""
-const val userProfileDescription = """
-UserProfile:
-- user: User
-- tasks: List<Task>
-- comments: List<Comment>
-"""
-const val userMinimalDescription = """
-UserMinimal:
-- id: String
-- displayName: String
-- imageUrl: String
-"""
-
-const val deleteUserResultDescription = "placeholder"
