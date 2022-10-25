@@ -240,7 +240,9 @@ object GraphQLDesc {
 
     object Order {
         const val model = "An order object."
+        const val createInput = "An order input object."
         const val parentId = "The parent order id."
+        const val userId = "Id of user placing the order."
         const val status = "The order status."
         const val currency = "The order currency."
         const val version = "The WC version used to create the order."

@@ -6,6 +6,7 @@ object Constants {
     const val SHOPS_COLLECTION = "Shops"
     const val PRODUCTS_COLLECTION = "Products"
     const val REVIEW_COLLECTION = "Reviews"
+    const val ORDER_COLLECTION = "Order"
 
     object Messages {
         const val NOT_SIGNED_IN = "Not signed in"

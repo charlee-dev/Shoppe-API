@@ -2,6 +2,7 @@ package com.digitaldesigns.shoppe.api
 
 import com.digitaldesigns.shoppe.api.features.auth.AuthService
 import com.digitaldesigns.shoppe.api.features.auth.JwtService
+import com.digitaldesigns.shoppe.api.features.order.OrderRepository
 import com.digitaldesigns.shoppe.api.features.product.ProductRepository
 import com.digitaldesigns.shoppe.api.features.product.ProductService
 import com.digitaldesigns.shoppe.api.features.review.ReviewRepository
@@ -17,10 +18,13 @@ private val mongoUri: String = System.getenv("MONGO_URI") ?: "mongodb+srv://adri
 
 val appModule = module {
     factory { KMongo.createClient(mongoUri) }
+
     single { UserRepository(get()) }
+    single { ShopRepository(get()) }
     single { ProductRepository(get()) }
     single { ReviewRepository(get()) }
-    single { ShopRepository(get()) }
+    single { OrderRepository(get()) }
+
     single { JwtService() }
     single { AuthService(get(), get()) }
     single { UserService(get(), get(), get(), get()) }

@@ -18,8 +18,8 @@ fun <T> DataFetchingEnvironment.withCurrentUser(block: (userId: String) -> T): T
 
 fun generateId(): String = UUID.randomUUID().toString()
 
-fun <T> checkPermissions(productUserId: String, currentUserId: String, block: () -> T): T {
-    return if (productUserId == currentUserId) {
+fun <T> checkPermissions(itemId: String, currentUserId: String, block: () -> T): T {
+    return if (itemId == currentUserId) {
         block()
     } else {
         error(Constants.Messages.INSUFFICIENT_PERMISSIONS)
