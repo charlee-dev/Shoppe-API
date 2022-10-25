@@ -68,6 +68,7 @@ object GraphQLDesc {
         const val isShippingTaxable = "Indicates that the product's shipping is taxable."
         const val shippingClass = "The shipping class for the product."
         const val shippingClassId = "The shipping class ID for the product."
+        const val productVariations = "Variations of the product."
     }
 
     object ProductAttribute {

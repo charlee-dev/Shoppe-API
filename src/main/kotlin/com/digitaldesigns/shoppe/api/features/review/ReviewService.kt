@@ -2,11 +2,15 @@ package com.digitaldesigns.shoppe.api.features.review
 
 import com.digitaldesigns.shoppe.api.domain.models.PageInput
 import com.digitaldesigns.shoppe.api.domain.util.checkPermissions
+import com.digitaldesigns.shoppe.api.features.order.OrderRepository
+import com.digitaldesigns.shoppe.api.features.order.model.Order
+import com.digitaldesigns.shoppe.api.features.order.model.OrderLineItem
 import com.digitaldesigns.shoppe.api.features.product.ProductRepository
 
 class ReviewService(
     private val reviewRepository: ReviewRepository,
     private val productRepository: ProductRepository,
+    private val orderRepository: OrderRepository,
 ) {
     fun getReview(userId: String, reviewId: String): Review {
         val review = reviewRepository.getById(reviewId)
@@ -22,10 +26,18 @@ class ReviewService(
                 authorId = userId,
                 productId = productId,
                 text = reviewInput.text,
-                rating = reviewInput.rating
+                rating = reviewInput.rating,
+                verified = isVerified(userId, productId)
             )
             reviewRepository.add(review)
         }
+    }
+
+    private fun isVerified(userId: String, productId: String): Boolean {
+        val userOrderedProducts = orderRepository.getOrdersByUserId(userId)
+            .flatMap(Order::lineItems)
+            .map(OrderLineItem::productId) // TODO: This can be done by mongo
+        return productId in userOrderedProducts
     }
 
     fun updateReview(userId: String, reviewId: String, reviewInput: ReviewInput): Review {
@@ -36,7 +48,8 @@ class ReviewService(
                 productId = review.productId,
                 authorId = userId,
                 text = reviewInput.text,
-                rating = reviewInput.rating
+                rating = reviewInput.rating,
+                verified = isVerified(userId, review.productId)
             )
             reviewRepository.update(updates)
         }

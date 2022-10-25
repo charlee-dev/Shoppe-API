@@ -29,6 +29,6 @@ val appModule = module {
     single { AuthService(get(), get()) }
     single { UserService(get(), get(), get(), get()) }
     single { ProductService(get(), get()) }
-    single { ReviewService(get(), get()) }
+    single { ReviewService(get(), get(), get()) }
     single { ShopService(get(), get(), get()) }
 }

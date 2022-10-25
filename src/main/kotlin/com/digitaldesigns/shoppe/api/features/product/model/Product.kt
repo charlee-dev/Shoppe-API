@@ -27,11 +27,11 @@ data class Product(
     @GraphQLDescription(GraphQLDesc.Product.images) val images: List<ProductImage> = emptyList(),
 
     @GraphQLDescription(GraphQLDesc.Product.allowReviews) val allowReviews: Boolean = false,
-    @GraphQLDescription(GraphQLDesc.Product.averageRating) val averageRating: Boolean = false,
-    @GraphQLDescription(GraphQLDesc.Product.numRatings) val numRatings: Boolean = false,
+    @GraphQLDescription(GraphQLDesc.Product.averageRating) val averageRating: Double? = null,
+    @GraphQLDescription(GraphQLDesc.Product.numRatings) val numRatings: Int = 0,
     @GraphQLDescription(GraphQLDesc.Product.relatedIds) val relatedIds: Boolean = false,
     @GraphQLDescription(GraphQLDesc.Product.attributes) val attributes: List<ProductAttribute> = emptyList(),
-    @GraphQLDescription(GraphQLDesc.Product.links) val links: Boolean = false,
+    @GraphQLDescription(GraphQLDesc.Product.links) val links: List<String> = emptyList(),
 
     @GraphQLDescription(GraphQLDesc.Product.productIds) val productIds: List<String> = emptyList(),
 
@@ -61,7 +61,7 @@ data class Product(
     @GraphQLDescription(GraphQLDesc.Product.isShippingTaxable) var isShippingTaxable: String = "",
     @GraphQLDescription(GraphQLDesc.Product.shippingClass) var shippingClass: String = "",
     @GraphQLDescription(GraphQLDesc.Product.shippingClassId) var shippingClassId: String = "",
-    val productVariations: List<ProductVariation> = emptyList(),
+    @GraphQLDescription(GraphQLDesc.Product.productVariations) val productVariations: List<ProductVariation> = emptyList(),
 ) : Model
 
 @GraphQLDescription(GraphQLDesc.Product.createInput)
@@ -90,7 +90,7 @@ data class ProductUpdateInput(
     @GraphQLDescription(GraphQLDesc.Product.allowReviews) val allowReviews: Boolean,
     @GraphQLDescription(GraphQLDesc.Product.relatedIds) val relatedIds: Boolean,
     @GraphQLDescription(GraphQLDesc.Product.attributes) val attributes: List<ProductAttribute>,
-    @GraphQLDescription(GraphQLDesc.Product.links) val links: Boolean,
+    @GraphQLDescription(GraphQLDesc.Product.links) val links: List<String>,
     @GraphQLDescription(GraphQLDesc.Product.images) val images: List<ProductImage>,
 
     @GraphQLDescription(GraphQLDesc.Product.isVirtual) val isVirtual: Boolean,
