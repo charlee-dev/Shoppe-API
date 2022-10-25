@@ -64,7 +64,7 @@ data class Product(
     val productVariations: List<ProductVariation> = emptyList(),
 ) : Model
 
-@GraphQLDescription(productBasicInputDescription)
+@GraphQLDescription(GraphQLDesc.Product.createInput)
 data class ProductCreateInput(
     @GraphQLDescription(GraphQLDesc.Product.name) val name: String,
     @GraphQLDescription(GraphQLDesc.Product.categories) val categories: List<ProductCategory>,

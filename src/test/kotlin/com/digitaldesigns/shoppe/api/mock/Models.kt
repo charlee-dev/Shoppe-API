@@ -41,14 +41,14 @@ val mockUsers = listOf(user1, user2, user3)
 val shop1 = Shop(
     id = "1",
     name = "cakeShop",
-    description = "descShop",
+    desc = "descShop",
     ownerId = user1.id
 )
 
 val shop2 = Shop(
     id = "2",
     name = "carShop",
-    description = "descShop",
+    desc = "descShop",
     ownerId = user1.id
 )
 

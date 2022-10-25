@@ -1,9 +1,12 @@
 package com.digitaldesigns.shoppe.api.graphql
 
 object GraphQLDesc {
-
     object Product {
+        const val query = "placeholder"
+        const val category = "placeholder"
         const val model = "The base for all product types."
+        const val createInput = "placeholder"
+        const val updateInput = "placeholder"
         const val id = "Product identifier."
         const val variationId = "Product variation identifier."
         const val shopId = "Identifier of the shop product belongs to."
@@ -131,6 +134,10 @@ object GraphQLDesc {
         const val page = "Page with Product Reviews and PageInfo"
         const val results = "List of Reviews"
         const val info = "PageInfo model"
+    }
+
+    object ReviewInput {
+        const val model = ""
     }
 
     object User {
@@ -276,5 +283,55 @@ object GraphQLDesc {
 
     object OrderStatus {
         const val model = "An order's status."
+    }
+
+    object AuthInput {
+        const val model = "placeholder"
+        const val email = "placeholder"
+        const val password = "placeholder"
+    }
+
+    object AuthResponse {
+        const val model = "placeholder"
+        const val token = "placeholder"
+        const val user = "placeholder"
+    }
+
+    object Shop {
+        const val query = "placeholder"
+        const val model = "placeholder"
+        const val id = "placeholder"
+        const val name = "placeholder"
+        const val desc = "placeholder"
+        const val logo = "placeholder"
+        const val ownerId = "placeholder"
+        const val dateCreated = "placeholder"
+    }
+
+    object ShopInput {
+        const val model = "placeholder"
+        const val name = "placeholder"
+        const val description = "placeholder"
+        const val logo = "placeholder"
+    }
+
+    object ShopPage {
+        const val model = "placeholder"
+        const val results = "placeholder"
+        const val info = "placeholder"
+    }
+
+    object PagingInfo {
+        const val model = "placeholder"
+        const val count = "placeholder"
+        const val pages = "placeholder"
+        const val next = "placeholder"
+        const val prev = "placeholder"
+    }
+
+    object PageInput {
+        const val model = "placeholder"
+        const val page = "placeholder"
+        const val size = "placeholder"
     }
 }

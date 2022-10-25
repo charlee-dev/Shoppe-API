@@ -20,7 +20,7 @@ class ShopRepository(client: MongoClient) : CrudRepository<Shop> {
     }
 
     fun queryShopByNamePaged(query: String, pageInput: PageInput): ShopPage = doSafely {
-        val filter = or(listOf(Shop::name eq query, Shop::description eq query))
+        val filter = or(listOf(Shop::name eq query, Shop::desc eq query))
         col.inPages(filter, pageInput).toShopPage()
     }
 

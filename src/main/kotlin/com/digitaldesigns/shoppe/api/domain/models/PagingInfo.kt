@@ -1,23 +1,26 @@
 package com.digitaldesigns.shoppe.api.domain.models
 
 import com.digitaldesigns.shoppe.api.domain.util.Constants
+import com.digitaldesigns.shoppe.api.graphql.GraphQLDesc
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 
-@GraphQLDescription(pagingInfoDescription)
+@GraphQLDescription(GraphQLDesc.PagingInfo.model)
 data class PagingInfo(
-    @GraphQLDescription(countDescription)
+    @GraphQLDescription(GraphQLDesc.PagingInfo.count)
     var count: Int,
-    @GraphQLDescription(pagesDescription)
+    @GraphQLDescription(GraphQLDesc.PagingInfo.pages)
     var pages: Int,
-    @GraphQLDescription(nextDescription)
+    @GraphQLDescription(GraphQLDesc.PagingInfo.next)
     var next: Int?,
-    @GraphQLDescription(prevDescription)
+    @GraphQLDescription(GraphQLDesc.PagingInfo.prev)
     var prev: Int?,
 )
 
-@GraphQLDescription(pageInputDescription)
+@GraphQLDescription(GraphQLDesc.PageInput.model)
 data class PageInput(
+    @GraphQLDescription(GraphQLDesc.PageInput.page)
     val page: Int = 0,
+    @GraphQLDescription(GraphQLDesc.PageInput.size)
     val size: Int = 10,
 ) {
     fun skips(): Int {
@@ -36,21 +39,3 @@ data class Page<T>(
     val results: List<T>,
     val info: PagingInfo,
 )
-
-const val pagingInfoDescription = """
-PagingInfo:
-- count: Int
-- pages: Int
-- next: Int?
-- prev: Int?
-"""
-const val pageInputDescription = """
-PageInput:
-- page: Int -> Default 0
-- size: Int -> Default 10
-"""
-const val countDescription = "Current page number"
-const val pagesDescription = "Number of total pages"
-const val nextDescription = "Number of nex page -> Nullable"
-const val prevDescription = "Number of previous page -> Nullable"
-const val pageDescription = "placeholder"

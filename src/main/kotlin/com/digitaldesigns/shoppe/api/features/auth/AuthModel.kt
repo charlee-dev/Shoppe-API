@@ -3,17 +3,15 @@ package com.digitaldesigns.shoppe.api.features.auth
 import com.digitaldesigns.shoppe.api.domain.util.Constants
 import com.digitaldesigns.shoppe.api.domain.util.trimWhitespaces
 import com.digitaldesigns.shoppe.api.features.user.UserMinimal
-import com.digitaldesigns.shoppe.api.features.user.emailDescription
-import com.digitaldesigns.shoppe.api.features.user.passwordDescription
-import com.digitaldesigns.shoppe.api.features.user.userMinimalDescription
+import com.digitaldesigns.shoppe.api.graphql.GraphQLDesc
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 import graphql.GraphQLException
 
-@GraphQLDescription(authInputDescription)
+@GraphQLDescription(GraphQLDesc.AuthInput.model)
 data class AuthInput(
-    @GraphQLDescription(emailDescription)
+    @GraphQLDescription(GraphQLDesc.AuthInput.email)
     val email: String,
-    @GraphQLDescription(passwordDescription)
+    @GraphQLDescription(GraphQLDesc.AuthInput.password)
     val password: String,
 ) {
     fun validate() {
@@ -26,13 +24,10 @@ data class AuthInput(
     }
 }
 
-@GraphQLDescription("AuthResponse:\n- token: String\n- user: UserMinimal")
+@GraphQLDescription(GraphQLDesc.AuthInput.model)
 data class AuthResponse(
-    @GraphQLDescription(tokenDescription)
+    @GraphQLDescription(GraphQLDesc.AuthResponse.token)
     val token: String,
-    @GraphQLDescription(userMinimalDescription)
+    @GraphQLDescription(GraphQLDesc.AuthResponse.user)
     val user: UserMinimal,
 )
-
-const val authInputDescription = "AuthInput:\n- email: String\n- password: String"
-const val tokenDescription = "Authorization token, without `Bearer ` prefix"

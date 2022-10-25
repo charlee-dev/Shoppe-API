@@ -2,6 +2,7 @@ package com.digitaldesigns.shoppe.api.features.review
 
 import com.digitaldesigns.shoppe.api.domain.models.PageInput
 import com.digitaldesigns.shoppe.api.domain.util.withCurrentUser
+import com.digitaldesigns.shoppe.api.graphql.GraphQLDesc
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 import com.expediagroup.graphql.server.operations.Mutation
 import com.expediagroup.graphql.server.operations.Query
@@ -16,6 +17,7 @@ class ReviewSchema {
         @Suppress("unused")
         fun getReview(
             dfe: DataFetchingEnvironment,
+            @GraphQLDescription(GraphQLDesc.Review.id)
             reviewId: String,
         ): Review {
             return dfe.withCurrentUser { userId ->
@@ -26,7 +28,9 @@ class ReviewSchema {
         @GraphQLDescription("getProductReviews")
         @Suppress("unused")
         fun getProductReviews(
+            @GraphQLDescription(GraphQLDesc.Review.productId)
             productId: String,
+            @GraphQLDescription(GraphQLDesc.PageInput.model)
             pageInput: PageInput,
         ): ReviewPage {
             return reviewService.getProductReviews(productId, pageInput)
@@ -35,7 +39,9 @@ class ReviewSchema {
         @GraphQLDescription("getUserReviews")
         @Suppress("unused")
         fun getUserReviews(
+            @GraphQLDescription(GraphQLDesc.User.model)
             userId: String,
+            @GraphQLDescription(GraphQLDesc.PageInput.model)
             pageInput: PageInput,
         ): ReviewPage {
             return reviewService.getUserReviews(userId, pageInput)
@@ -44,7 +50,9 @@ class ReviewSchema {
         @GraphQLDescription("getShopReviews")
         @Suppress("unused")
         fun getShopReviews(
+            @GraphQLDescription(GraphQLDesc.Shop.id)
             shopId: String,
+            @GraphQLDescription(GraphQLDesc.PageInput.model)
             pageInput: PageInput,
         ): ReviewPage {
             return reviewService.getShopReviews(shopId, pageInput)
@@ -58,7 +66,9 @@ class ReviewSchema {
         @Suppress("unused")
         fun createReview(
             dfe: DataFetchingEnvironment,
+            @GraphQLDescription(GraphQLDesc.Product.id)
             productId: String,
+            @GraphQLDescription(GraphQLDesc.ReviewInput.model)
             reviewInput: ReviewInput,
         ): Review {
             return dfe.withCurrentUser { userId ->
@@ -70,7 +80,9 @@ class ReviewSchema {
         @Suppress("unused")
         fun updateReview(
             dfe: DataFetchingEnvironment,
+            @GraphQLDescription(GraphQLDesc.Review.id)
             reviewId: String,
+            @GraphQLDescription(GraphQLDesc.ReviewInput.model)
             reviewInput: ReviewInput,
         ): Review {
             return dfe.withCurrentUser { userId ->
@@ -82,6 +94,7 @@ class ReviewSchema {
         @Suppress("unused")
         fun deleteReview(
             dfe: DataFetchingEnvironment,
+            @GraphQLDescription(GraphQLDesc.Review.id)
             reviewId: String,
         ): Boolean {
             return dfe.withCurrentUser { userId ->
