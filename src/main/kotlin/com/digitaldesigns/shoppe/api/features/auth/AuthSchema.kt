@@ -15,7 +15,7 @@ class AuthSchema {
         @Suppress("unused")
         @Throws(GraphQLException::class)
         fun signIn(
-            @GraphQLDescription(GraphQLDesc.AuthInput.model)
+            @GraphQLDescription(GraphQLDesc.Auth.Input.model)
             authInput: AuthInput,
         ): AuthResponse {
             return authService.signIn(authInput)
@@ -25,7 +25,7 @@ class AuthSchema {
         @Suppress("unused")
         @Throws(GraphQLException::class)
         fun signUp(
-            @GraphQLDescription(GraphQLDesc.AuthInput.model)
+            @GraphQLDescription(GraphQLDesc.Auth.Input.model)
             authInput: AuthInput,
         ): AuthResponse {
             return authService.signUp(authInput)

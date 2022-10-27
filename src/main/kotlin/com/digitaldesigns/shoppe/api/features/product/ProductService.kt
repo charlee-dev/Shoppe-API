@@ -3,10 +3,10 @@ package com.digitaldesigns.shoppe.api.features.product
 import com.digitaldesigns.shoppe.api.domain.models.PageInput
 import com.digitaldesigns.shoppe.api.domain.util.checkPermissions
 import com.digitaldesigns.shoppe.api.features.product.model.Product
-import com.digitaldesigns.shoppe.api.features.product.model.ProductCategory
 import com.digitaldesigns.shoppe.api.features.product.model.ProductCreateInput
 import com.digitaldesigns.shoppe.api.features.product.model.ProductPage
 import com.digitaldesigns.shoppe.api.features.product.model.ProductUpdateInput
+import com.digitaldesigns.shoppe.api.features.product.model.shared.ProductCategory
 import com.digitaldesigns.shoppe.api.features.review.ReviewRepository
 
 class ProductService(

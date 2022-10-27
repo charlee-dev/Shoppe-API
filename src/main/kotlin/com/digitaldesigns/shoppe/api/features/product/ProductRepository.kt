@@ -6,11 +6,13 @@ import com.digitaldesigns.shoppe.api.domain.util.Constants
 import com.digitaldesigns.shoppe.api.domain.util.doSafely
 import com.digitaldesigns.shoppe.api.domain.util.inPages
 import com.digitaldesigns.shoppe.api.features.product.model.Product
-import com.digitaldesigns.shoppe.api.features.product.model.ProductCategory
 import com.digitaldesigns.shoppe.api.features.product.model.ProductPage
+import com.digitaldesigns.shoppe.api.features.product.model.abstract.ProductCommon
+import com.digitaldesigns.shoppe.api.features.product.model.shared.ProductCategory
 import com.digitaldesigns.shoppe.api.features.product.model.toProductPage
 import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoCollection
+import org.litote.kmongo.div
 import org.litote.kmongo.eq
 import org.litote.kmongo.getCollection
 import org.litote.kmongo.or
@@ -26,8 +28,8 @@ class ProductRepository(client: MongoClient) : CrudRepository<Product> {
     fun queryProductNameByPaged(query: String, pageInput: PageInput): ProductPage = doSafely {
         val filter = or(
             listOf(
-                Product::name eq query,
-                Product::desc eq query,
+                Product::common / ProductCommon::name eq query,
+                Product::common / ProductCommon::desc eq query,
             )
         )
         col.inPages(filter, pageInput).toProductPage()

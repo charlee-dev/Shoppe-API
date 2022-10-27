@@ -3,20 +3,20 @@ package com.digitaldesigns.shoppe.api.features.order.model
 import com.digitaldesigns.shoppe.api.graphql.GraphQLDesc
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 
-@GraphQLDescription(GraphQLDesc.OrderTaxRate.model)
+@GraphQLDescription(GraphQLDesc.Order.TaxRate.model)
 data class OrderTaxRate(
-    @GraphQLDescription(GraphQLDesc.OrderTaxRate.rateCode)
+    @GraphQLDescription(GraphQLDesc.Order.TaxRate.rateCode)
     val rateCode: String,
-    @GraphQLDescription(GraphQLDesc.OrderTaxRate.rateId)
+    @GraphQLDescription(GraphQLDesc.Order.TaxRate.rateId)
     val rateId: String,
-    @GraphQLDescription(GraphQLDesc.OrderTaxRate.label)
+    @GraphQLDescription(GraphQLDesc.Order.TaxRate.label)
     val label: String,
-    @GraphQLDescription(GraphQLDesc.OrderTaxRate.compoundRate)
+    @GraphQLDescription(GraphQLDesc.Order.TaxRate.compoundRate)
     val compoundRate: Boolean,
-    @GraphQLDescription(GraphQLDesc.OrderTaxRate.taxTotal)
+    @GraphQLDescription(GraphQLDesc.Order.TaxRate.taxTotal)
     val taxTotal: String,
-    @GraphQLDescription(GraphQLDesc.OrderTaxRate.shippingTaxTotal)
+    @GraphQLDescription(GraphQLDesc.Order.TaxRate.shippingTaxTotal)
     val shippingTaxTotal: String,
-    @GraphQLDescription(GraphQLDesc.OrderTaxRate.ratePercent)
+    @GraphQLDescription(GraphQLDesc.Order.TaxRate.ratePercent)
     val ratePercent: Double,
 )

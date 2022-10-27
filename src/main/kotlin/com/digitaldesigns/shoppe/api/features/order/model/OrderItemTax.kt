@@ -3,10 +3,10 @@ package com.digitaldesigns.shoppe.api.features.order.model
 import com.digitaldesigns.shoppe.api.graphql.GraphQLDesc
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 
-@GraphQLDescription(GraphQLDesc.OrderItemTax.model)
+@GraphQLDescription(GraphQLDesc.Order.ItemTax.model)
 data class OrderItemTax(
-    @GraphQLDescription(GraphQLDesc.OrderItemTax.total)
+    @GraphQLDescription(GraphQLDesc.Order.ItemTax.total)
     var total: Double,
-    @GraphQLDescription(GraphQLDesc.OrderItemTax.subtotal)
+    @GraphQLDescription(GraphQLDesc.Order.ItemTax.subtotal)
     var subtotal: Double,
 )

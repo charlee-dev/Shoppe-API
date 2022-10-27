@@ -3,32 +3,32 @@ package com.digitaldesigns.shoppe.api.features.order.model
 import com.digitaldesigns.shoppe.api.graphql.GraphQLDesc
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 
-@GraphQLDescription(GraphQLDesc.OrderLineItem.model)
+@GraphQLDescription(GraphQLDesc.Order.LineItem.model)
 data class OrderLineItem(
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.name)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.name)
     val name: String,
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.productId)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.productId)
     val productId: String,
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.variationId)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.variationId)
     val variationId: String,
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.quantity)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.quantity)
     val quantity: Int,
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.taxClass)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.taxClass)
     val taxClass: String,
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.subtotal)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.subtotal)
     val subtotal: Double,
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.subtotalTax)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.subtotalTax)
     val subtotalTax: Double,
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.total)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.total)
     val total: Double,
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.totalTax)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.totalTax)
     val totalTax: Double,
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.taxes)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.taxes)
     val taxes: List<OrderItemTax>,
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.sku)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.sku)
     val sku: String,
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.price)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.price)
     val price: Double,
-    @GraphQLDescription(GraphQLDesc.OrderLineItem.parentName)
+    @GraphQLDescription(GraphQLDesc.Order.LineItem.parentName)
     val parentName: String,
 )

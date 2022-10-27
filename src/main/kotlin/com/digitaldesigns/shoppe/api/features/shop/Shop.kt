@@ -27,13 +27,13 @@ data class Shop(
     val dateCreated: String = getTimeMillis().toString(),
 ) : Model
 
-@GraphQLDescription(GraphQLDesc.ShopInput.model)
+@GraphQLDescription(GraphQLDesc.Shop.Input.model)
 data class ShopInput(
-    @GraphQLDescription(GraphQLDesc.ShopInput.name)
+    @GraphQLDescription(GraphQLDesc.Shop.Input.name)
     val name: String,
-    @GraphQLDescription(GraphQLDesc.ShopInput.description)
+    @GraphQLDescription(GraphQLDesc.Shop.Input.description)
     val description: String,
-    @GraphQLDescription(GraphQLDesc.ShopInput.logo)
+    @GraphQLDescription(GraphQLDesc.Shop.Input.logo)
     val logo: String = "",
 ) {
     fun validate() {
@@ -50,11 +50,11 @@ data class ShopInput(
     )
 }
 
-@GraphQLDescription(GraphQLDesc.ShopPage.model)
+@GraphQLDescription(GraphQLDesc.Shop.Page.model)
 data class ShopPage(
-    @GraphQLDescription(GraphQLDesc.ShopPage.results)
+    @GraphQLDescription(GraphQLDesc.Shop.Page.results)
     val results: List<Shop>,
-    @GraphQLDescription(GraphQLDesc.ShopPage.info)
+    @GraphQLDescription(GraphQLDesc.Shop.Page.info)
     val info: PagingInfo,
 )
 

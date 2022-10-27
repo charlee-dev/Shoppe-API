@@ -68,7 +68,7 @@ class ReviewSchema {
             dfe: DataFetchingEnvironment,
             @GraphQLDescription(GraphQLDesc.Product.id)
             productId: String,
-            @GraphQLDescription(GraphQLDesc.ReviewInput.model)
+            @GraphQLDescription(GraphQLDesc.Review.Input.model)
             reviewInput: ReviewInput,
         ): Review {
             return dfe.withCurrentUser { userId ->
@@ -82,7 +82,7 @@ class ReviewSchema {
             dfe: DataFetchingEnvironment,
             @GraphQLDescription(GraphQLDesc.Review.id)
             reviewId: String,
-            @GraphQLDescription(GraphQLDesc.ReviewInput.model)
+            @GraphQLDescription(GraphQLDesc.Review.Input.model)
             reviewInput: ReviewInput,
         ): Review {
             return dfe.withCurrentUser { userId ->

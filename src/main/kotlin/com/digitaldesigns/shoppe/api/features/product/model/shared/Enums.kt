@@ -1,9 +1,13 @@
-package com.digitaldesigns.shoppe.api.features.product.model
+package com.digitaldesigns.shoppe.api.features.product.model.shared
 
 import com.digitaldesigns.shoppe.api.graphql.GraphQLDesc
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 
-enum class StockStatus { IN_STOCK, OUT_OF_STOCK, ON_BACK_ORDER }
+enum class StockStatus {
+    IN_STOCK,
+    OUT_OF_STOCK,
+    ON_BACK_ORDER
+}
 
 @GraphQLDescription(GraphQLDesc.SortOrder.model)
 enum class SortOrder {
@@ -20,4 +24,10 @@ enum class MeasureUnit {
 
 enum class WeightUnit {
     G, KG, STONE, POUND, LBS
+}
+
+enum class BackorderStatus {
+    ALLOWED,
+    ALLOWED_WITH_NOTIFICATION,
+    NOT_ALLOWED
 }

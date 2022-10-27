@@ -2,82 +2,160 @@ package com.digitaldesigns.shoppe.api.graphql
 
 object GraphQLDesc {
     object Product {
-        const val query = "placeholder"
+        const val query = "The product search query"
+        const val createInput = "The product Create Input parameters."
+        const val updateInput = "The product Update Input parameters."
         const val category = "placeholder"
-        const val model = "The base for all product types."
-        const val createInput = "placeholder"
-        const val updateInput = "placeholder"
+
+        const val model = "The product model."
         const val id = "Product identifier."
-        const val variationId = "Product variation identifier."
         const val shopId = "Identifier of the shop product belongs to."
         const val userId = "Identifier of user, that created the product."
-        const val name = "The name of the product."
-        const val slug = "The slug of the product."
-        const val created = "The GMT datetime when the product was created."
-        const val modified = "The GMT datetime when the product was last modified."
-        const val desc = "The product's short description."
-        const val categories = "An array of the categories this product is in."
-        const val tags = "An array of the tags this product has."
-        const val colors = "An array of product colors."
-        const val isFeatured = "Indicates whether or not the product should be featured."
-        const val totalSales = "The count of sales of the product."
-        const val images = "List of product images"
-        const val image = "Product variation images"
-        const val allowReviews = "Indicates whether or not a product allows reviews."
-        const val averageRating = "The average rating for the product."
-        const val numRatings = "The number of ratings for the product."
-        const val relatedIds = "An array of IDs of related products."
-        const val attributes = "The attributes for the product."
-        const val links = "The product's links."
-        const val rating = "The product's rating."
 
-        const val productIds = "An array of cross sell product ids string."
+        object Common {
+            const val model = "The base for all product types."
+            const val name = "The name of the product."
+            const val desc = "The product's short description."
+            const val slug = "The slug of the product."
+            const val created = "The GMT datetime when the product was created."
+            const val modified = "The GMT datetime when the product was last modified."
+            const val categories = "An array of the categories this product is in."
+            const val tags = "An array of the tags this product has."
+            const val isFeatured = "Indicates whether or not the product should be featured."
+            const val totalSales = "The count of sales of the product."
+            const val allowReviews = "Indicates whether or not a product allows reviews."
+            const val averageRating = "The average rating for the product."
+            const val numRatings = "The number of ratings for the product."
+            const val relatedIds = "An array of IDs of related products."
+            const val attributes = "The attributes for the product."
+            const val links = "The product's links."
+            const val images = "List of product images"
+            const val productVariations = "Variations of the product."
+            const val colors = "An array of product colors."
+        }
 
-        const val isVirtual = "Indicates that the product is delivered virtually."
-        const val isDownloadable = "Indicates whether or not the product is downloadable."
-        const val downloads = "The downloads available for the product."
-        const val downloadLimit = "The maximum number of times a customer may download the product's contents."
-        const val daysToDownload =
-            "The number of days after purchase that a customer may still download the product's contents."
-        const val purchaseNote = "The text shown to the customer on completing the purchase of this product."
+        object Variation {
+            const val model = "The base for product Variation types."
+            const val variationId = "Product variation identifier."
+            const val created = Common.created
+            const val modified = Common.modified
+            const val attributes = Common.attributes
+            const val image = "Product variation image"
+            const val price = Price.price
+            const val regularPrice = Price.regularPrice
+            const val onSale = Price.onSale
+            const val salePrice = Price.salePrice
+            const val saleStart = Price.saleStart
+            const val saleEnd = Price.saleEnd
+            const val remainingStock = Inventory.remainingStock
+            const val totalSales = Common.totalSales
+        }
 
-        const val onePreOrder = "Indicates that only one of a product may be held in the order at a time."
-        const val trackInventory = "Indicates that a product should use the inventory system."
-        const val remainingStock = "The number of inventory units remaining for this product."
-        const val stockStatus = "The product's stock status."
-        const val backorderStatus = "The status of back-ordering for a product."
-        const val canBackorder = "Indicates whether or not a product can be back-ordered."
-        const val isOnBackorder = "Indicates whether or not a product is on backorder."
-        const val lowStockThreshold =
-            "Indicates the threshold for when the low stock notification will be sent to the merchant."
+        object Price {
+            const val model = "The base for Price product types."
+            const val price = "The current price of the product."
+            const val regularPrice = "The regular price of the product when not discounted."
+            const val onSale = "Indicates whether or not the product is currently on sale."
+            const val salePrice = "The price of the product when on sale."
+            const val saleStart = "The GMT datetime when the product should start to be on sale."
+            const val saleEnd = "The GMT datetime when the product should no longer be on sale."
+        }
 
-        const val price = "The current price of the product."
-        const val regularPrice = "The regular price of the product when not discounted."
-        const val onSale = "Indicates whether or not the product is currently on sale."
-        const val salePrice = "The price of the product when on sale."
-        const val saleStart = "The GMT datetime when the product should start to be on sale."
-        const val saleEnd = "The GMT datetime when the product should no longer be on sale."
+        object Inventory {
+            const val model = "The base for Inventory product types."
+            const val onePreOrder = "Indicates that only one of a product may be held in the order at a time."
+            const val trackInventory = "Indicates that a product should use the inventory system."
+            const val remainingStock = "The number of inventory units remaining for this product."
+            const val stockStatus = "The product's stock status."
+            const val backorderStatus = "The status of back-ordering for a product."
+            const val canBackorder = "Indicates whether or not a product can be back-ordered."
+            const val isOnBackorder = "Indicates whether or not a product is on backorder."
+            const val lowStockThreshold =
+                "Indicates the threshold for when the low stock notification will be sent to the merchant."
+        }
 
-        const val weight = "The weight of the product in the store's current units."
-        const val weightUnit = "The weight unit of the product."
-        const val length = "The length of the product in the store's current units."
-        const val width = "The width of the product in the store's current units."
-        const val height = "The height of the product in the store's current units."
-        const val measureUnit = "The measure unit  of the product."
-        const val requiresShipping = "Indicates that the product must be shipped."
-        const val isShippingTaxable = "Indicates that the product's shipping is taxable."
-        const val shippingClass = "The shipping class for the product."
-        const val shippingClassId = "The shipping class ID for the product."
-        const val productVariations = "Variations of the product."
-    }
+        object Shipping {
+            const val model = "The base for Shipping product types."
+            const val weight = "The weight of the product in the store's current units."
+            const val weightUnit = "The weight unit of the product."
+            const val length = "The length of the product in the store's current units."
+            const val width = "The width of the product in the store's current units."
+            const val height = "The height of the product in the store's current units."
+            const val measureUnit = "The measure unit  of the product."
+            const val requiresShipping = "Indicates that the product must be shipped."
+            const val isShippingTaxable = "Indicates that the product's shipping is taxable."
+            const val shippingClass = "The shipping class for the product."
+            const val shippingClassId = "The shipping class ID for the product."
+        }
 
-    object ProductAttribute {
-        const val model = "A product's attributes."
-        const val input = "A product's attributes input."
-        const val sortOrder = "The sort order of the attribute."
-        const val isVisibleOnProductPage = "Indicates whether or not the attribute is visible on the product page."
-        const val isForVariations = "Indicates whether or not the attribute should be used in variations."
-        const val options = "The options which are available for the attribute."
+        object Delivery {
+            const val model = "The base for Delivery product types."
+            const val isVirtual = "Indicates that the product is delivered virtually."
+            const val isDownloadable = "Indicates whether or not the product is downloadable."
+            const val downloads = "The downloads available for the product."
+            const val downloadLimit = "The maximum number of times a customer may download the product's contents."
+            const val daysToDownload =
+                "The number of days after purchase that a customer may still download the product's contents."
+            const val purchaseNote = "The text shown to the customer on completing the purchase of this product."
+        }
+
+        object CrossSell {
+            const val model = "The base for CrossSell product types."
+            const val productIds = "An array of cross sell product ids string."
+        }
+
+        object Grouped {
+            const val model = "The base for Grouped product types."
+            const val productIds = "An array of grouped product ids string."
+        }
+
+        object Page {
+            const val model = "placeholder"
+            const val results = "placeholder"
+            const val info = PagingInfo.model
+        }
+
+        object Category {
+            const val model = "Category tag"
+            const val name = "Category tag name"
+            const val isCustom = "Indicates if category is custom"
+            const val createdDate = "Category creation date"
+            const val createdBy = "Specifies who created the category"
+        }
+
+        object Tag {
+            const val model = "Product tag"
+            const val name = "Product tag name"
+            const val isCustom = "Indicates if tag is custom"
+            const val createdDate = "Tag creation date"
+            const val createdBy = "Specifies who created the tag"
+        }
+
+        object Image {
+            const val model = "A product's image."
+            const val id = "The ID of the image."
+            const val created = "The GMT datetime when the image was created."
+            const val modified = "The GMT datetime when the image was last modified."
+            const val url = "The URL for the image file."
+            const val name = "The name of the image file."
+            const val altText = "The alt text to use on the image."
+        }
+
+        object Download {
+            const val model = "A product's download."
+            const val id = "The ID of the downloadable file."
+            const val name = "The name of the downloadable file."
+            const val url = "The URL of the downloadable file."
+        }
+
+        object Attribute {
+            const val model = "A product's attributes."
+            const val input = "A product's attributes input."
+            const val sortOrder = "The sort order of the attribute."
+            const val isVisibleOnProductPage = "Indicates whether or not the attribute is visible on the product page."
+            const val isForVariations = "Indicates whether or not the attribute should be used in variations."
+            const val options = "The options which are available for the attribute."
+        }
     }
 
     object SortOrder {
@@ -86,42 +164,8 @@ object GraphQLDesc {
         const val desc = "Product sort order descending"
     }
 
-    object ProductCategory {
-        const val model = "Category tag"
-        const val name = "Category tag name"
-        const val isCustom = "Indicates if category is custom"
-        const val createdDate = "Category creation date"
-        const val createdBy = "Specifies who created the category"
-    }
-
-    object ProductTag {
-        const val model = "Product tag"
-        const val name = "Product tag name"
-        const val isCustom = "Indicates if tag is custom"
-        const val createdDate = "Tag creation date"
-        const val createdBy = "Specifies who created the tag"
-    }
-
-    object ProductImage {
-        const val model = "A product's image."
-        const val id = "The ID of the image."
-        const val created = "The GMT datetime when the image was created."
-        const val modified = "The GMT datetime when the image was last modified."
-        const val url = "The URL for the image file."
-        const val name = "The name of the image file."
-        const val altText = "The alt text to use on the image."
-    }
-
-    object ProductDownload {
-        const val model = "A product's download."
-        const val id = "The ID of the downloadable file."
-        const val name = "The name of the downloadable file."
-        const val url = "The URL of the downloadable file."
-    }
-
     object Review {
         const val model = "Product review model"
-        const val input = "Product review input model"
         const val id = "Unique identifier for the resource."
         const val authorId = "Reviewer identifier."
         const val productId = "Unique identifier for the product that the review belongs to."
@@ -129,16 +173,18 @@ object GraphQLDesc {
         const val rating = "integer 0 to 5"
         const val dateCreated = "The date the review was created, in the site's timezone."
         const val verified = "Shows if the reviewer bought the product or not."
-    }
 
-    object ReviewPage {
-        const val page = "Page with Product Reviews and PageInfo"
-        const val results = "List of Reviews"
-        const val info = "PageInfo model"
-    }
+        object Page {
+            const val model = "Page with Product Reviews and PageInfo"
+            const val results = "List of Reviews"
+            const val info = PagingInfo.model
+        }
 
-    object ReviewInput {
-        const val model = ""
+        object Input {
+            const val model = "Product review input model"
+            const val text = Review.text
+            const val rating = Review.rating
+        }
     }
 
     object User {
@@ -157,93 +203,6 @@ object GraphQLDesc {
         const val locale = "Users default localization"
         const val dateCreated = "Users creation date in GMT"
         const val lastModified = "Users last modification date in GMT"
-    }
-
-    object OrderItemTax {
-        const val model = "Order line item tax entry."
-        const val total = "The total tax for this tax rate on this item."
-        const val subtotal = "The subtotal tax for this tax rate on this item."
-    }
-
-    object ShippingOrderAddress {
-        const val model = "An order address."
-        const val firstName = "The first name of the person in the address."
-        const val lastName = "The last name of the person in the address."
-        const val company = "The company name of the person in the address."
-        const val address1 = "The first address line in the address."
-        const val address2 = "The second address line in the address."
-        const val city = "The city in the address."
-        const val state = "The state in the address."
-        const val postCode = "The postal code in the address."
-        const val country = "The country code for the address."
-    }
-
-    object BillingOrderAddress {
-        const val model = "An order billing address"
-        const val email = "The email address of the person in the address."
-        const val phone = "The phone number of the person in the address."
-    }
-
-    object OrderRefundLine {
-        const val model = "Order refund line"
-        const val reason = "The reason for giving the refund."
-        const val total = "The total amount of the refund."
-    }
-
-    object OrderCouponLine {
-        const val model = "Order coupon line"
-        const val code = "The coupon code"
-        const val discount = "The discount amount."
-        const val discountTax = "The discount tax."
-    }
-
-    object OrderFeeLine {
-        const val model = "Order fee line"
-        const val name = "The name of the fee."
-        const val taxClass = "The tax class of the fee."
-        const val taxStatus = "The tax status of the fee."
-        const val amount = "The total amount for this fee."
-        const val total = "The display total amount for this fee."
-        const val totalTax = "The total tax amount for this fee."
-        const val taxes = "The taxes applied to this fee."
-    }
-
-    object OrderShippingLine {
-        const val model = "Order shipping line"
-        const val methodTitle = "The shipping method title."
-        const val methodId = "The shipping method id."
-        const val instanceId = "The shipping method instance id."
-        const val total = "The total shipping amount for this method."
-        const val totalTax = "The total tax amount for this shipping method."
-        const val taxes = "The taxes applied to this shipping method."
-    }
-
-    object OrderTaxRate {
-        const val model = ""
-        const val rateCode = "The tax rate code."
-        const val rateId = "The tax rate id."
-        const val label = "The tax label."
-        const val compoundRate = "Flag indicating whether it's a compound tax rate."
-        const val taxTotal = "The total tax for this rate code."
-        const val shippingTaxTotal = "The total shipping tax for this rate code."
-        const val ratePercent = "The tax rate as a percentage."
-    }
-
-    object OrderLineItem {
-        const val model = "Order Line Item"
-        const val name = "The name of the product."
-        const val productId = "The ID of the product."
-        const val variationId = "The ID of the product variation."
-        const val quantity = "The quantity of the product."
-        const val taxClass = "The tax class for the product."
-        const val subtotal = "The subtotal for the product."
-        const val subtotalTax = "The subtotal tax for the product."
-        const val total = "The total for the product including adjustments."
-        const val totalTax = "The total tax for the product including adjustments."
-        const val taxes = "The taxes applied to the product."
-        const val sku = "The product SKU."
-        const val price = "The price of the product."
-        const val parentName = "The name of the parent product."
     }
 
     object Order {
@@ -280,22 +239,111 @@ object GraphQLDesc {
         const val feeLines = "The order's fees."
         const val couponLines = "The coupons used on the order."
         const val refunds = "The refunds to the order."
+
+        object ItemTax {
+            const val model = "Order line item tax entry."
+            const val total = "The total tax for this tax rate on this item."
+            const val subtotal = "The subtotal tax for this tax rate on this item."
+        }
+
+        object ShippingAddress {
+            const val model = "An order address."
+            const val firstName = "The first name of the person in the address."
+            const val lastName = "The last name of the person in the address."
+            const val company = "The company name of the person in the address."
+            const val address1 = "The first address line in the address."
+            const val address2 = "The second address line in the address."
+            const val city = "The city in the address."
+            const val state = "The state in the address."
+            const val postCode = "The postal code in the address."
+            const val country = "The country code for the address."
+        }
+
+        object BillingAddress {
+            const val model = "An order billing address"
+            const val email = "The email address of the person in the address."
+            const val phone = "The phone number of the person in the address."
+        }
+
+        object RefundLine {
+            const val model = "Order refund line"
+            const val reason = "The reason for giving the refund."
+            const val total = "The total amount of the refund."
+        }
+
+        object CouponLine {
+            const val model = "Order coupon line"
+            const val code = "The coupon code"
+            const val discount = "The discount amount."
+            const val discountTax = "The discount tax."
+        }
+
+        object FeeLine {
+            const val model = "Order fee line"
+            const val name = "The name of the fee."
+            const val taxClass = "The tax class of the fee."
+            const val taxStatus = "The tax status of the fee."
+            const val amount = "The total amount for this fee."
+            const val total = "The display total amount for this fee."
+            const val totalTax = "The total tax amount for this fee."
+            const val taxes = "The taxes applied to this fee."
+        }
+
+        object ShippingLine {
+            const val model = "Order shipping line"
+            const val methodTitle = "The shipping method title."
+            const val methodId = "The shipping method id."
+            const val instanceId = "The shipping method instance id."
+            const val total = "The total shipping amount for this method."
+            const val totalTax = "The total tax amount for this shipping method."
+            const val taxes = "The taxes applied to this shipping method."
+        }
+
+        object TaxRate {
+            const val model = ""
+            const val rateCode = "The tax rate code."
+            const val rateId = "The tax rate id."
+            const val label = "The tax label."
+            const val compoundRate = "Flag indicating whether it's a compound tax rate."
+            const val taxTotal = "The total tax for this rate code."
+            const val shippingTaxTotal = "The total shipping tax for this rate code."
+            const val ratePercent = "The tax rate as a percentage."
+        }
+
+        object LineItem {
+            const val model = "Order Line Item"
+            const val name = "The name of the product."
+            const val productId = "The ID of the product."
+            const val variationId = "The ID of the product variation."
+            const val quantity = "The quantity of the product."
+            const val taxClass = "The tax class for the product."
+            const val subtotal = "The subtotal for the product."
+            const val subtotalTax = "The subtotal tax for the product."
+            const val total = "The total for the product including adjustments."
+            const val totalTax = "The total tax for the product including adjustments."
+            const val taxes = "The taxes applied to the product."
+            const val sku = "The product SKU."
+            const val price = "The price of the product."
+            const val parentName = "The name of the parent product."
+        }
+
+        object Status {
+            const val model = "An order's status."
+        }
     }
 
-    object OrderStatus {
-        const val model = "An order's status."
-    }
+    object Auth {
+        object Input {
+            const val model = "placeholder"
+            const val email = "placeholder"
+            const val password = "placeholder"
+        }
 
-    object AuthInput {
-        const val model = "placeholder"
-        const val email = "placeholder"
-        const val password = "placeholder"
-    }
-
-    object AuthResponse {
-        const val model = "placeholder"
-        const val token = "placeholder"
-        const val user = "placeholder"
+        object Response {
+            const val model = "placeholder"
+            const val token = "placeholder"
+            const val user = "placeholder"
+        }
     }
 
     object Shop {
@@ -307,19 +355,19 @@ object GraphQLDesc {
         const val logo = "placeholder"
         const val ownerId = "placeholder"
         const val dateCreated = "placeholder"
-    }
 
-    object ShopInput {
-        const val model = "placeholder"
-        const val name = "placeholder"
-        const val description = "placeholder"
-        const val logo = "placeholder"
-    }
+        object Input {
+            const val model = "placeholder"
+            const val name = "placeholder"
+            const val description = "placeholder"
+            const val logo = "placeholder"
+        }
 
-    object ShopPage {
-        const val model = "placeholder"
-        const val results = "placeholder"
-        const val info = "placeholder"
+        object Page {
+            const val model = "placeholder"
+            const val results = "placeholder"
+            const val info = PagingInfo.model
+        }
     }
 
     object PagingInfo {

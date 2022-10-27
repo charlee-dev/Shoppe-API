@@ -1,6 +1,6 @@
 package com.digitaldesigns.shoppe.api.features.product
 
-import com.digitaldesigns.shoppe.api.features.product.model.ProductCategory
+import com.digitaldesigns.shoppe.api.features.product.model.shared.ProductCategory
 import com.digitaldesigns.shoppe.api.helpers.SchemaTest
 import com.digitaldesigns.shoppe.api.mock.product1
 import com.digitaldesigns.shoppe.api.mock.shop1

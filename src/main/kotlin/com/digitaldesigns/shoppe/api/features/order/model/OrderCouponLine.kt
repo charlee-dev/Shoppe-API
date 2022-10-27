@@ -3,12 +3,12 @@ package com.digitaldesigns.shoppe.api.features.order.model
 import com.digitaldesigns.shoppe.api.graphql.GraphQLDesc
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 
-@GraphQLDescription(GraphQLDesc.OrderCouponLine.model)
+@GraphQLDescription(GraphQLDesc.Order.CouponLine.model)
 data class OrderCouponLine(
-    @GraphQLDescription(GraphQLDesc.OrderCouponLine.code)
+    @GraphQLDescription(GraphQLDesc.Order.CouponLine.code)
     val code: String = "",
-    @GraphQLDescription(GraphQLDesc.OrderCouponLine.discount)
+    @GraphQLDescription(GraphQLDesc.Order.CouponLine.discount)
     val discount: String = "",
-    @GraphQLDescription(GraphQLDesc.OrderCouponLine.discountTax)
+    @GraphQLDescription(GraphQLDesc.Order.CouponLine.discountTax)
     val discountTax: String = "",
 )

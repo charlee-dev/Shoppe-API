@@ -7,11 +7,11 @@ import com.digitaldesigns.shoppe.api.graphql.GraphQLDesc
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 import graphql.GraphQLException
 
-@GraphQLDescription(GraphQLDesc.AuthInput.model)
+@GraphQLDescription(GraphQLDesc.Auth.Input.model)
 data class AuthInput(
-    @GraphQLDescription(GraphQLDesc.AuthInput.email)
+    @GraphQLDescription(GraphQLDesc.Auth.Input.email)
     val email: String,
-    @GraphQLDescription(GraphQLDesc.AuthInput.password)
+    @GraphQLDescription(GraphQLDesc.Auth.Input.password)
     val password: String,
 ) {
     fun validate() {
@@ -24,10 +24,10 @@ data class AuthInput(
     }
 }
 
-@GraphQLDescription(GraphQLDesc.AuthInput.model)
+@GraphQLDescription(GraphQLDesc.Auth.Input.model)
 data class AuthResponse(
-    @GraphQLDescription(GraphQLDesc.AuthResponse.token)
+    @GraphQLDescription(GraphQLDesc.Auth.Response.token)
     val token: String,
-    @GraphQLDescription(GraphQLDesc.AuthResponse.user)
+    @GraphQLDescription(GraphQLDesc.Auth.Response.user)
     val user: UserMinimal,
 )

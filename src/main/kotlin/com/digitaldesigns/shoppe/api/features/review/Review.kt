@@ -19,16 +19,16 @@ data class Review(
     @GraphQLDescription(GraphQLDesc.Review.verified) var verified: Boolean,
 ) : Model
 
-@GraphQLDescription(GraphQLDesc.Review.input)
+@GraphQLDescription(GraphQLDesc.Review.Input.model)
 data class ReviewInput(
-    @GraphQLDescription(GraphQLDesc.Review.text) val text: String,
-    @GraphQLDescription(GraphQLDesc.Review.rating) val rating: Int,
+    @GraphQLDescription(GraphQLDesc.Review.Input.text) val text: String,
+    @GraphQLDescription(GraphQLDesc.Review.Input.rating) val rating: Int,
 )
 
-@GraphQLDescription(GraphQLDesc.ReviewPage.page)
+@GraphQLDescription(GraphQLDesc.Review.Page.model)
 data class ReviewPage(
-    @GraphQLDescription(GraphQLDesc.ReviewPage.results) val results: List<Review>,
-    @GraphQLDescription(GraphQLDesc.ReviewPage.info) val info: PagingInfo,
+    @GraphQLDescription(GraphQLDesc.Review.Page.results) val results: List<Review>,
+    @GraphQLDescription(GraphQLDesc.Review.Page.info) val info: PagingInfo,
 )
 
 fun Page<Review>.toReviewPage() = ReviewPage(

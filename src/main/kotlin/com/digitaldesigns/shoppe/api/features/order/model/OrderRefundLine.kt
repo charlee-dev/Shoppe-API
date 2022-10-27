@@ -3,10 +3,10 @@ package com.digitaldesigns.shoppe.api.features.order.model
 import com.digitaldesigns.shoppe.api.graphql.GraphQLDesc
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 
-@GraphQLDescription(GraphQLDesc.OrderRefundLine.model)
+@GraphQLDescription(GraphQLDesc.Order.RefundLine.model)
 data class OrderRefundLine(
-    @GraphQLDescription(GraphQLDesc.OrderRefundLine.reason)
+    @GraphQLDescription(GraphQLDesc.Order.RefundLine.reason)
     val reason: String,
-    @GraphQLDescription(GraphQLDesc.OrderRefundLine.total)
+    @GraphQLDescription(GraphQLDesc.Order.RefundLine.total)
     val total: String,
 )
