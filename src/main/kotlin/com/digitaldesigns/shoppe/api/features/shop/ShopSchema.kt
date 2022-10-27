@@ -52,7 +52,7 @@ class ShopSchema {
         @Suppress("unused")
         fun createShop(
             dfe: DataFetchingEnvironment,
-            @GraphQLDescription(GraphQLDesc.ShopInput.model)
+            @GraphQLDescription(GraphQLDesc.Shop.Input.model)
             shopBasicInput: ShopInput,
         ): Shop {
             return dfe.withCurrentUser { userId ->
@@ -66,7 +66,7 @@ class ShopSchema {
             dfe: DataFetchingEnvironment,
             @GraphQLDescription(GraphQLDesc.Shop.id)
             shopId: String,
-            @GraphQLDescription(GraphQLDesc.ShopInput.model)
+            @GraphQLDescription(GraphQLDesc.Shop.Input.model)
             shopUpdateInput: ShopInput,
         ): Shop {
             return dfe.withCurrentUser { userId ->
